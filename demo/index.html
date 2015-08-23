@@ -24,7 +24,7 @@
   </p>
   <ul>
     <li>
-      has invisible (but still screen-reader accessible) title
+      has an invisible but still screen-reader-accessible title
     </li>
     <li>
       places initial focus on the deactivation button
@@ -46,10 +46,10 @@
       does not close when the underlay is clicked
     </li>
     <li>
-      has a visible title (which is used by the screen-reader)
+      has a visible title (which is also used by the screen-reader)
     </li>
     <li>
-      does not deliberately place focus (so the first element in the tab order receives focus)
+      does not deliberately place focus, so the first element in the tab order receives focus
     </li>
     <li>
       has an internally scrolling region
@@ -65,10 +65,11 @@
   </p>
   <ul>
     <li>
-      is tall enough that it scrolling is required to see all of its content
+      is tall enough that scrolling is required to see all of its content
     </li>
     <li>
-      adds a tabIndex to the dialog element itself, without outline
+      adds a tabIndex to the dialog element itself, without outline, so the focus trap
+      still works but no focus outline is initially visible
     </li>
   </ul>
   <div id="demo-three"></div>

@@ -1,9 +1,29 @@
 .modal {
   background: #fff;
-  padding: 1em 2em;
   margin-top: 2em;
   margin-bottom: 2em;
   outline: 0;
   min-width: 250px;
   max-width: 500px;
+  border-radius: 4px;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  padding: 0.5em 1.5em;
+}
+
+
+.modal-header {
+  border-bottom: 1px solid #eee;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-footer {
+  border-top: 1px solid #eee;
+  text-align: right;
 }

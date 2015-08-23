@@ -24,14 +24,16 @@ var DemoOne = React.createClass({
         initialFocus='#demo-one-deactivate'
       >
         <div id='demo-one-modal' className='modal'>
-          <p>
-            Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
-          </p>
-          <p>
+          <div className='modal-body'>
+            <p>
+              Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
+            </p>
+          </div>
+          <footer className='modal-footer'>
             <button id='demo-one-deactivate' onClick={this.deactivateModal}>
               deactivate modal
             </button>
-          </p>
+          </footer>
         </div>
       </AriaModal>
     ) : false;

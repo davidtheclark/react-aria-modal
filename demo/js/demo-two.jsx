@@ -25,25 +25,32 @@ var DemoTwo = React.createClass({
         verticallyCenter={true}
       >
         <div id='demo-two-modal' className='modal'>
-          <h2 id='demo-two-title'>
-            This modal has a title
-          </h2>
-          <p>
-            Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
-          </p>
-          <div style={{ height: 200, overflow: 'scroll' }}>
-            <h3>
-              Internal Scrolling Element
-            </h3>
+          <header className='modal-header'>
+            <h2
+              id='demo-two-title'
+              className='modal-title'
+            >
+              This modal has a title
+            </h2>
+          </header>
+          <div className='modal-body'>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
             </p>
+            <div style={{ height: 200, overflow: 'scroll' }}>
+              <h3>
+                Internally Scrolling Region
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
           </div>
-          <p>
+          <footer className='modal-footer'>
             <button id='demo-two-deactivate' onClick={this.deactivateModal}>
               deactivate modal
             </button>
-          </p>
+          </footer>
         </div>
       </AriaModal>
     ) : false;

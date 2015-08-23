@@ -25,18 +25,20 @@ var DemoOne = React.createClass({
         <AriaModal
           titleText='demo four'
           onExit={this.deactivateModal}
-          initialFocus='demo-four-deactivate'
+          initialFocus='#demo-four-deactivate'
           active={this.state.modalActive}
         >
           <div id='demo-four-modal' className='modal'>
-            <p>
-              Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
-            </p>
-            <p>
+            <div className='modal-body'>
+              <p>
+                Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
+              </p>
+            </div>
+            <footer className='modal-footer'>
               <button id='demo-four-deactivate' onClick={this.deactivateModal}>
                 deactivate modal
               </button>
-            </p>
+            </footer>
           </div>
         </AriaModal>
       </div>
