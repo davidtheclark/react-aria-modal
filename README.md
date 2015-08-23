@@ -13,6 +13,10 @@ a focus-trap wrapper which could be used by other React libraries.)
 
 [Check out the demo.](http://davidtheclark.github.io/react-aria-modal/demo/)
 
+** If you like this kind of module (accessible, flexible, unstyled) you should also check out these projects:**
+- [react-aria-menubutton](https://github.com/davidtheclark/react-aria-menubutton)
+- [react-aria-tabpanel](https://github.com/davidtheclark/react-aria-tabpanel)
+
 ## Installation
 
 ```
