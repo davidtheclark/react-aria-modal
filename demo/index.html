@@ -51,8 +51,36 @@
     <li>
       does not deliberately place focus (so the first element in the tab order receives focus)
     </li>
+    <li>
+      has an internally scrolling region
+    </li>
   </ul>
   <div id="demo-two"></div>
+
+  <h2>
+    demo three
+  </h2>
+  <p>
+    This modal
+  </p>
+  <ul>
+    <li>
+      is tall enough that it scrolling is required to see all of its content
+    </li>
+    <li>
+      adds a tabIndex to the dialog element itself, without outline
+    </li>
+  </ul>
+  <div id="demo-three"></div>
+
+  <h2>
+    demo four
+  </h2>
+  <p>
+    This modal's active/inactive state is controlled with the <code>active</code> prop instead of
+    mounting and unmounting.
+  </p>
+  <div id="demo-four"></div>
 
   <script src="demo-bundle.js"></script>
 </body>

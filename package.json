@@ -1,7 +1,7 @@
 {
   "name": "react-aria-modal",
   "version": "0.1.0",
-  "description": "A fully accessible React modal built according WAI-ARIA Authoring Practices",
+  "description": "A fully flexible and accessible React modal built according WAI-ARIA Authoring Practices",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -35,6 +35,7 @@
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
     "focus-trap-react": "^0.1.0",
+    "no-scroll": "^0.1.0",
     "react": "0.13.x"
   },
   "devDependencies": {

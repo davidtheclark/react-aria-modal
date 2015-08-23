@@ -31,6 +31,14 @@ var DemoTwo = React.createClass({
           <p>
             Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
           </p>
+          <div style={{ height: 200, overflow: 'scroll' }}>
+            <h3>
+              Internal Scrolling Element
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
           <p>
             <button id='demo-two-deactivate' onClick={this.deactivateModal}>
               deactivate modal

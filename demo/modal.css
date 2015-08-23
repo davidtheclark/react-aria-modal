@@ -2,5 +2,8 @@
   background: #fff;
   padding: 1em 2em;
   margin-top: 2em;
+  margin-bottom: 2em;
   outline: 0;
+  min-width: 250px;
+  max-width: 500px;
 }

@@ -19,7 +19,7 @@ var DemoOne = React.createClass({
   render: function() {
     var modal = (this.state.modalActive) ? (
       <AriaModal
-        titleText='foo'
+        titleText='demo one'
         onExit={this.deactivateModal}
         initialFocus='demo-one-deactivate'
       >
