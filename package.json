@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
-    "focus-trap-react": "^0.1.0",
+    "focus-trap-react": "^0.2.0",
     "no-scroll": "^0.1.0",
     "react": "0.13.x"
   },
