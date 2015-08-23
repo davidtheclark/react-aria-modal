@@ -9,7 +9,7 @@ This module is built on top of some vanilla JS modules that could be used by non
 It doesn't directly depend on focus-trap, but uses [focus-trap-react](https://github.com/davidtheclark/focus-trap-react),
 a wrapper which could be used by other React libraries.
 
-*This module provides minimal inline styles to get the thing working. It does not provide "complete" modal styling.* You will have to style the dialog yourself.
+*This module provides minimal inline styles to get the thing working. It does not provide "complete" modal styling.* You will get to (have to) style the dialog yourself.
 
 ## Installation
 
