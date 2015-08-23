@@ -11,6 +11,8 @@ This module is built on top of some vanilla JS modules that could be used by non
 (It doesn't directly depend on focus-trap, but uses [focus-trap-react](https://github.com/davidtheclark/focus-trap-react),
 a focus-trap wrapper which could be used by other React libraries.)
 
+[Check out the demo.](http://davidtheclark.github.io/react-aria-modal/demo/)
+
 ## Installation
 
 ```
@@ -21,7 +23,7 @@ npm install react-aria-modal
 
 Just provide the right props (see below) and pass the content of the modal as this component's child.
 
-Look in `demo/js/` for example code. But here's a simple example.
+Look in `demo/js/` for example code. (And see what they look like [here]((http://davidtheclark.github.io/react-aria-modal/demo/).) But here's a simple example.
 
 ```js
 var AriaModal = require('react-aria-modal');
