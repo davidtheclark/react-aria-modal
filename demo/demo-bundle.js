@@ -532,7 +532,7 @@ var Modal = React.createClass({
     };
 
     if (this.props.underlayClickExits) {
-      underlayProps.cursor = 'pointer';
+      underlayProps.style.cursor = 'pointer';
       underlayProps.onClick = this.checkClick;
     }
 
