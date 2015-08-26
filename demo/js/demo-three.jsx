@@ -21,11 +21,11 @@ var DemoOne = React.createClass({
       <AriaModal
         titleText='demo three'
         onExit={this.deactivateModal}
+        focusDialog={true}
       >
         <div
           id='demo-three-modal'
           className='modal'
-          tabIndex='0'
         >
           <div className='modal-header'>
             <button onClick={this.deactivateModal}>

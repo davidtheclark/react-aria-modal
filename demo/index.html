@@ -16,6 +16,34 @@
     react-aria-modal demo
   </h1>
 
+  <p>
+    When a modal is active, you should notice the following:
+    <ul>
+      <li>
+        Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
+        without returning to the main document beneath.
+      </li>
+      <li>
+        The dialog element has an ARIA <code>role</code> of <code>dialog</code> (or <code>alertdialog</code>).
+      </li>
+      <li>
+        The dialog element has an ARIA attribute designating its title, either <code>aria-label</code> or <code>aria-labelledby</code>.
+      </li>
+      <li>
+        Escape will close the modal.
+      </li>
+      <li>
+        By default, clicking on the modal's underlay (outside the dialog element) will close the modal (this can be disabled).
+      </li>
+      <li>
+        Scrolling is frozen on the main document beneath the modal. (Although, sadly, you can still mess with the scrolling using a touch screen.)
+      </li>
+      <li>
+        The modal is appended to the end of <code>document.body</code> instead of its taking up its source-order position within the React component tree.
+      </li>
+    </ul>
+  </p>
+
   <h2>
     demo one
   </h2>
@@ -78,7 +106,7 @@
     demo four
   </h2>
   <p>
-    This modal's active/inactive state is controlled with the <code>active</code> prop instead of
+    This modal's active/inactive state is controlled with the <code>mounted</code> prop instead of
     mounting and unmounting.
   </p>
   <div id="demo-four"></div>

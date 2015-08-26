@@ -113,11 +113,21 @@ Type: `Boolean`
 
 If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`.
 
+### focusDialog
+
+Type: `Boolean`
+
+By default, when the modal activates its first focusable child will receive focus.
+However, if `focusDialog` is `true`, the dialog itself will receive initial focus —
+and that focus will be hidden. (This is essentially what Bootstrap does with their modal.)
+
+See the example below.
+
 ### initialFocus
 
 Type: `String`
 
-By default, *when the modal activates its first focusable child will receive focus*. If, instead, you want to identify a specific element that should receive initial focus, pass a *selector string* to this prop. (That selector is passed to `document.querySelector()` to find the DOM node.)
+By default, when the modal activates its first focusable child will receive focus. If, instead, you want to *identify a specific element that should receive initial focus*, pass a *selector string* to this prop. (That selector is passed to `document.querySelector()` to find the DOM node.)
 
 Demo example 3 and an additional example below illustrate a good method if you want no initial visible focus. (Add `tabIndex='0'` to the modal's content and give it `outline: 0;`.)
 
@@ -184,12 +194,12 @@ var MyModal = React.createClass({
       <AriaModal
         onExit={this.myExitHandler}
         alert={true}
+        focusDialog={true}
         titleId='modal-title'
         underlayClickExists={false}
         verticallyCenter={true}
       >
         <div
-          tabIndex='0'
           style={{ outline: 0 }}
           className='my-modal-dialog'
         >
