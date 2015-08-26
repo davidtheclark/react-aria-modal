@@ -52,7 +52,7 @@ var DemoOne = React.createClass({
           activate modal
         </button>
         <AriaModal
-          active={this.state.modalActive}
+          mounted={this.state.modalActive}
           titleText='demo one'
           onExit={this.deactivateModal}
           initialFocus='#demo-one-deactivate'
@@ -80,16 +80,16 @@ var DemoOne = React.createClass({
 ## Details
 
 The modal can be activated in a couple of ways:
-- mounting the component *without* an `active` prop
-- passing `true` as the `active` prop
+- mounting the component *without* an `mounted` prop
+- passing `true` as the `mounted` prop
 
 Similarly, the modal can be deactivated in a couple of ways:
 - unmounting the component
-- passing `false` as the `active` prop
+- passing `false` as the `mounted` prop
 
 Pass your dialog element as the child. And that's it.
 
-When the modal is active, you'll notice the following:
+When the modal is mounted, you'll notice the following:
 - Focus is trapped: only elements within the modal will receive focus as you tab through. This is done by [focus-trap](https://github.com/davidtheclark/focus-trap), via [focus-trap-react](https://github.com/davidtheclark/focus-trap-react).
 - The modal has the ARIA attributes it needs: a `role` of `dialog` (or `alertdialog`) and an `aria-label` or `aria-labelledby` attribute.
 - The main document's scroll is frozen (except on touchscreens). This is done by [no-scroll](https://github.com/davidtheclark/no-scroll).
@@ -120,6 +120,13 @@ Type: `String`
 By default, *when the modal activates its first focusable child will receive focus*. If, instead, you want to identify a specific element that should receive initial focus, pass a *selector string* to this prop. (That selector is passed to `document.querySelector()` to find the DOM node.)
 
 Demo example 3 and an additional example below illustrate a good method if you want no initial visible focus. (Add `tabIndex='0'` to the modal's content and give it `outline: 0;`.)
+
+### mounted
+
+Type: `Boolean`
+
+By default, the modal is active when mounted, deactivated when unmounted.
+However, you can also control its active/inactive state by changing its `mounted` property instead.
 
 ### titleId
 

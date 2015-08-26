@@ -26,7 +26,7 @@ var DemoOne = React.createClass({
           titleText='demo four'
           onExit={this.deactivateModal}
           initialFocus='#demo-four-deactivate'
-          active={this.state.modalActive}
+          mounted={this.state.modalActive}
         >
           <div id='demo-four-modal' className='modal'>
             <div className='modal-body'>
