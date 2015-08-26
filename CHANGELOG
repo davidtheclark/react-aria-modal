@@ -1,3 +1,9 @@
+# Head
+
+- Add `onEnter` prop.
+- Change `active` prop to `mounted`.
+- Use `react-displace`.
+
 # 0.1.1
 
 - Fix `cursor: pointer;` bug.

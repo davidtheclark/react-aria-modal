@@ -1,17 +1,31 @@
 # react-aria-modal
 
-A fully flexible and accessible React modal built according WAI-ARIA Authoring Practices.
+A fully accessible and flexible React modal built according [WAI-ARIA Authoring Practices](http://www.w3.org/TR/wai-aria-practices/#dialog_modal).
 
-"Flexible" mostly means that this module provides minimal inline styles to get the thing working, but does not provide "complete" modal styling that would get in you way. You get to (have to) style the dialog yourself. Essentially, this module provides a "smart" minimally styled component to wrap you "dumb" fully styled component.
+This module provides a "smart" minimally styled component to wrap you "dumb" fully styled component. It provides the following features, while giving you complete control of the content:
 
-This module is built on top of some vanilla JS modules that could be used by non-React libraries:
-- [focus-trap](https://github.com/davidtheclark/focus-trap)
-- [no-scroll](https://github.com/davidtheclark/no-scroll)
+  - Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
+  without returning to the main document beneath.
+  - Escape will close the modal.
+  - Scrolling is frozen on the main document beneath the modal. (Although, sadly, you can still mess with the scrolling using a touch screen.)
+  - The dialog element has an ARIA `role` of `dialog` (or `alertdialog`).
+  - The dialog element has an ARIA attribute designating its title, either `aria-label` or `aria-labelledby`.
+  - By default, clicking on the modal's underlay (outside the dialog element) will close the modal (this can be disabled).
+  - The modal is appended to the end of `document.body` instead of its taking up its source-order position within the React component tree.
 
-(It doesn't directly depend on focus-trap, but uses [focus-trap-react](https://github.com/davidtheclark/focus-trap-react),
-a focus-trap wrapper which could be used by other React libraries.)
+"Flexible" mostly means that this module provides absolutely minimal inline styles — just enough to get the thing working — but does not provide "complete" modal styling that would get in your way. You get to (have to) style the dialog yourself. (Maybe make a fancy-looking modal module that others could use, which depends on this one behind the scenes?)
 
 [Check out the demo.](http://davidtheclark.github.io/react-aria-modal/demo/)
+
+## Project Goals
+
+- Full accessibility
+- Maximum flexibility
+- Absolutely minimal styling
+- Modular construction: this module is built on top of a few small JS modules that could be used by other React and non-React frontend components:
+  - [focus-trap](https://github.com/davidtheclark/focus-trap), via [focus-trap-react](https://github.com/davidtheclark/focus-trap-react)
+  - [no-scroll](https://github.com/davidtheclark/no-scroll)
+  - [react-displace](https://github.com/davidtheclark/react-displace)
 
 **If you like this kind of module (accessible, flexible, unstyled) you should also check out these projects:**
 - [react-aria-menubutton](https://github.com/davidtheclark/react-aria-menubutton)
@@ -138,6 +152,15 @@ Type: `Boolean`
 By default, the modal is active when mounted, deactivated when unmounted.
 However, you can also control its active/inactive state by changing its `mounted` property instead.
 
+### onEnter
+
+Type: `Function`
+
+This function is called in the modal's `componentDidMount()` lifecycle method.
+You can use it to do whatever diverse and sundry things you feel like doing after the modal activates.
+
+Demo Five, for example, uses it to modify class names and enable some CSS transitions.
+
 ### titleId
 
 Type: `String`
@@ -170,9 +193,12 @@ By default, a click on the underlay will exit the modal. Pass `false`, and click
 
 ### underlayColor
 
-Type: `String` (color value), Default: `rgba(0,0,0,0.5)`
+Type: `String` (color value) or `false`, Default: `rgba(0,0,0,0.5)`
 
-If you want to change about the underlay's color, you can do that with this prop.
+If you want to change the underlay's color, you can do that with this prop.
+
+If `false`, no background color will be applied with inline styles.
+Presumably you will apply then yourself via an `underlayClass`.
 
 ### verticallyCenter
 
@@ -211,8 +237,3 @@ var MyModal = React.createClass({
   }
 })
 ```
-
-## Coming soon
-
-- Unit tests
-- Function children (primarily useful for animation)

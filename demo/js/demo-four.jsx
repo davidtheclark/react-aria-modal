@@ -1,7 +1,7 @@
 var React = require('react');
 var AriaModal = require('../../');
 
-var DemoOne = React.createClass({
+var DemoFour = React.createClass({
   getInitialState: function() {
     return {
       modalActive: false,
@@ -46,4 +46,4 @@ var DemoOne = React.createClass({
   },
 });
 
-React.render(<DemoOne />, document.getElementById('demo-four'));
+React.render(<DemoFour />, document.getElementById('demo-four'));
