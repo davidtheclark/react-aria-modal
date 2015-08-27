@@ -1,4 +1,4 @@
-# Head
+# 1.0.0
 
 - Add `onEnter` prop.
 - Change `active` prop to `mounted`.

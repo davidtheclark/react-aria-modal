@@ -8,6 +8,7 @@ This module provides a "smart" minimally styled component to wrap you "dumb" ful
   without returning to the main document beneath.
   - Escape will close the modal.
   - Scrolling is frozen on the main document beneath the modal. (Although, sadly, you can still mess with the scrolling using a touch screen.)
+  - When the modal closes, focus returns to the element that was focused just before the modal activated.
   - The dialog element has an ARIA `role` of `dialog` (or `alertdialog`).
   - The dialog element has an ARIA attribute designating its title, either `aria-label` or `aria-labelledby`.
   - By default, clicking on the modal's underlay (outside the dialog element) will close the modal (this can be disabled).
@@ -151,6 +152,40 @@ Type: `Boolean`
 
 By default, the modal is active when mounted, deactivated when unmounted.
 However, you can also control its active/inactive state by changing its `mounted` property instead.
+
+The following two examples are near-equivalents — the first mounts and unmounts, while the second changes the `mounted` prop:
+
+```js
+var MyComponent = React.createClass({
+  ..
+  render: function() {
+    ..
+    var modal = (this.state.modalActive) ? (
+      <AriaModal onExit={this.myExitHandler}>
+        {modalContents}
+      </AriaModal>
+    ) : false;
+    return <div>{modal}</div>;
+  },
+});
+
+var MyComponentTakeTwo = React.createClass({
+  ..
+  render: function() {
+    ..
+    return (
+      <div>
+        <AriaModal
+          mounted={this.state.modalActive}
+          onExit={this.myExitHandler}
+        >
+          {modalContents}
+        </AriaModal>
+      </div>
+    );
+  },
+});
+```
 
 ### onEnter
 
