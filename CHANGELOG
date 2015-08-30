@@ -1,13 +1,19 @@
-# 1.0.0
+# Changelog
+
+## 1.0.1
+
+- Upgrade `no-scroll`.
+
+## 1.0.0
 
 - Add `onEnter` prop.
 - Change `active` prop to `mounted`.
 - Use `react-displace`.
 
-# 0.1.1
+## 0.1.1
 
 - Fix `cursor: pointer;` bug.
 
-# 0.1.0
+## 0.1.0
 
 - Initial release.
