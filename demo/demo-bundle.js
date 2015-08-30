@@ -976,6 +976,7 @@ function isHidden(node) {
 
 },{}],13:[function(require,module,exports){
 var scrollbarSize;
+var doc = document.documentElement;
 
 function getScrollbarSize() {
   if (typeof scrollbarSize !== 'undefined') return scrollbarSize;
@@ -983,31 +984,31 @@ function getScrollbarSize() {
   var dummyScroller = document.createElement('div');
   dummyScroller.setAttribute('style', 'width:99px;height:99px;'
     + 'position:absolute;top:-9999px;overflow:scroll;');
-  document.body.appendChild(dummyScroller);
+  doc.appendChild(dummyScroller);
   scrollbarSize = dummyScroller.offsetWidth - dummyScroller.clientWidth;
-  document.body.removeChild(dummyScroller);
+  doc.removeChild(dummyScroller);
   return scrollbarSize;
 }
 
 function hasScrollbar() {
-  return document.body.scrollHeight > window.innerHeight;
+  return doc.scrollHeight > window.innerHeight;
 }
 
 function on(options) {
-  var rightPad = parseInt(getComputedStyle(document.body)['padding-right'], 10);
-  var originalStyle = document.body.getAttribute('style') || '';
+  var rightPad = parseInt(getComputedStyle(doc)['padding-right'], 10);
+  var originalStyle = doc.getAttribute('style') || '';
   originalStyle += 'overflow:hidden;';
   if (hasScrollbar()) {
     rightPad += getScrollbarSize();
     originalStyle += 'padding-right:' + rightPad + 'px;';
   }
-  document.body.setAttribute('style', originalStyle);
+  doc.setAttribute('style', originalStyle);
 }
 
 function off() {
-  var cleanedStyle = document.body.getAttribute('style')
+  var cleanedStyle = doc.getAttribute('style')
     .replace(/overflow:hidden;(?:padding-right:.+?;)?/, '');
-  document.body.setAttribute('style', cleanedStyle);
+  doc.setAttribute('style', cleanedStyle);
 }
 
 module.exports = {
