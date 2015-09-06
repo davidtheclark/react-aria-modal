@@ -1,6 +1,6 @@
 {
   "name": "react-aria-modal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A fully accessible and flexible React modal built according WAI-ARIA Authoring Practices",
   "main": "index.js",
   "scripts": {
