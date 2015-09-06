@@ -30,9 +30,9 @@
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
     "focus-trap-react": "^1.0.0",
-    "no-scroll": "^1.0.1",
+    "no-scroll": "^1.0.2",
     "react": "0.13.x",
-    "react-displace": "^1.0.0"
+    "react-displace": "^1.0.1"
   },
   "devDependencies": {
     "babelify": "6.2.0",
