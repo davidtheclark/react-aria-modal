@@ -560,13 +560,16 @@ var Modal = React.createClass({
     }
   },
 
+  componentWillUnmount: function componentWillUnmount() {
+    noScroll.off();
+  },
+
   checkClick: function checkClick(e) {
     if (React.findDOMNode(this.refs.dialog).contains(e.target)) return;
     this.deactivate();
   },
 
   deactivate: function deactivate() {
-    noScroll.off();
     this.props.onExit();
   },
 
@@ -975,8 +978,9 @@ function isHidden(node) {
 }
 
 },{}],13:[function(require,module,exports){
+(function (global){
 var scrollbarSize;
-var doc = document.documentElement;
+var doc = global.document && global.document.documentElement;
 
 function getScrollbarSize() {
   if (typeof scrollbarSize !== 'undefined') return scrollbarSize;
@@ -995,6 +999,7 @@ function hasScrollbar() {
 }
 
 function on(options) {
+  if (!doc) return;
   var rightPad = parseInt(getComputedStyle(doc)['padding-right'], 10);
   var originalStyle = doc.getAttribute('style') || '';
   originalStyle += 'overflow:hidden;';
@@ -1006,6 +1011,7 @@ function on(options) {
 }
 
 function off() {
+  if (!doc) return;
   var cleanedStyle = doc.getAttribute('style')
     .replace(/overflow:hidden;(?:padding-right:.+?;)?/, '');
   doc.setAttribute('style', cleanedStyle);
@@ -1016,10 +1022,16 @@ module.exports = {
   off: off,
 };
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],14:[function(require,module,exports){
+(function (global){
 var React = require('react');
 
 module.exports = function(Content, options) {
+  if (!global.document) return React.createClass({
+    render: function() { return false; },
+  });
+
   options = options || {};
   var container = (function() {
     if (!options.renderTo) {
@@ -1079,6 +1091,7 @@ module.exports = function(Content, options) {
   });
 }
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"react":187}],15:[function(require,module,exports){
 module.exports = require('./lib/ReactWithAddons');
 
