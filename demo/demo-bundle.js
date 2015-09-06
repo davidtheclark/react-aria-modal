@@ -549,9 +549,8 @@ var Modal = React.createClass({
 
   componentWillMount: function componentWillMount() {
     if (!this.props.titleText && !this.props.titleId) {
-      throw new Error('react-aria-modal instances should have a `title` or `titleId`');
+      throw new Error('react-aria-modal instances should have a `titleText` or `titleId`');
     }
-
     noScroll.on();
   },
 
@@ -563,7 +562,7 @@ var Modal = React.createClass({
 
   checkClick: function checkClick(e) {
     if (React.findDOMNode(this.refs.dialog).contains(e.target)) return;
-    this.props.onExit();
+    this.deactivate();
   },
 
   deactivate: function deactivate() {
@@ -602,6 +601,7 @@ var Modal = React.createClass({
     var dialogProps = {
       ref: 'dialog',
       role: this.props.alert ? 'alertdialog' : 'dialog',
+      id: 'react-aria-modal-dialog',
       style: {
         position: 'absolute',
         left: '50%',
@@ -620,12 +620,12 @@ var Modal = React.createClass({
     }
 
     if (this.props.focusDialog) {
-      dialogProps.tabIndex = '0';
+      dialogProps.tabIndex = '-1';
       dialogProps.style.outline = 0;
     }
 
     return focusTrapFactory({
-      initialFocus: this.props.initialFocus,
+      initialFocus: this.props.focusDialog ? '#react-aria-modal-dialog' : this.props.initialFocus,
       onDeactivate: this.deactivate
     }, React.DOM.div(underlayProps, React.DOM.div(dialogProps, this.props.children)));
   }
