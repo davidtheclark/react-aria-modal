@@ -610,6 +610,7 @@ var Modal = React.createClass({
         left: '50%',
         top: topValue,
         margin: 'auto',
+        maxWidth: '100%',
         WebkitTransform: transformValue,
         transform: transformValue,
         cursor: 'default'
