@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Add `max-width: 100%` to dialog element.
+
 ## 1.0.3
 
 - Move `noScroll.off()` to `componentWillUnmount()`.
