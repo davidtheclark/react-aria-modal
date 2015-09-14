@@ -128,6 +128,20 @@ Type: `Boolean`
 
 If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`.
 
+### dialogClass
+
+Type: `String`
+
+Apply a class to the dialog in order to custom-style it.
+
+Be aware that this module does apply various inline styles to the dialog element in order position it.
+
+### dialogId
+
+Type: `String`, Default: `react-aria-modal-dialog`
+
+Choose your own id attribute for the dialog element.
+
 ### focusDialog
 
 Type: `Boolean`
