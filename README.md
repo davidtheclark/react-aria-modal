@@ -38,6 +38,14 @@ This module provides a "smart" minimally styled component to wrap you "dumb" ful
 npm install react-aria-modal
 ```
 
+You'll need to be compiling CommonJS modules.
+
+### React Dependency
+
+Version 2+ is compatible with React 0.14.
+
+Version 1+ is compatible with React 0.13.
+
 ## Usage
 
 Just provide the right props (see below) and pass the content of the modal as this component's child.

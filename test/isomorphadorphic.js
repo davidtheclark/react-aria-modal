@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 var AriaModal = require('..');
 
 var App = React.createClass({
@@ -25,4 +26,4 @@ var App = React.createClass({
   },
 });
 
-console.log(React.renderToString(React.createElement(App)));
+console.log(ReactDOMServer.renderToString(React.createElement(App)));

@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var AriaModal = require('../../');
 
 var DemoOne = React.createClass({
@@ -69,4 +70,4 @@ var DemoOne = React.createClass({
   },
 });
 
-React.render(<DemoOne />, document.getElementById('demo-three'));
+ReactDOM.render(<DemoOne />, document.getElementById('demo-three'));

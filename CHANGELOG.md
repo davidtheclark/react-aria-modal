@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Upgrade to react 0.14 and its companion react-dom.
+
 ## 1.1.0
 
 - Add `dialogId` and `dialogClass` props.
