@@ -1,8 +1,9 @@
 # Changelog
 
-## Head
+## 2.0.0
 
 - Upgrade to react 0.14 and its companion react-dom.
+- Upgrade react-displace and focus-trap-react to their React 0.14 versions.
 
 ## 1.1.0
 
