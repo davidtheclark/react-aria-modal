@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Change vertical centering method to avoid occasional blurriness caused by translate.
+
 ## 2.0.0
 
 - Upgrade to react 0.14 and its companion react-dom.
