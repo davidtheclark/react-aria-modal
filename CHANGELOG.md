@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.0.1
 
 - Change vertical centering method to avoid occasional blurriness caused by translate.
 
