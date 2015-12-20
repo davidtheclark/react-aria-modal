@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Upgrade `react-displace`.
+
 ## 2.0.0
 
 - Upgrade to react 0.14 and its companion react-dom.
