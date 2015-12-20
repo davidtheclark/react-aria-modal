@@ -15,7 +15,7 @@ body {
 input:focus,
 a:focus,
 button:focus {
-  box-shadow: 0 0 5px lightblue;
+  box-shadow: 0 0 5px 5px #285DAB;
 }
 
 button {

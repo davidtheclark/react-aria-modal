@@ -1,8 +1,12 @@
 # Changelog
 
-## 2.0.1
+## Head
 
 - Upgrade `react-displace`.
+
+## 2.0.1
+
+- Change vertical centering method to avoid occasional blurriness caused by translate.
 
 ## 2.0.0
 
