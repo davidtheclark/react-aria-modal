@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.0.2
 
 - Upgrade `react-displace`.
 
