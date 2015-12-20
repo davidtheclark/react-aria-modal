@@ -294,3 +294,11 @@ var MyModal = React.createClass({
   }
 })
 ```
+
+## Contributing & Development
+
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+Lint with `npm run lint`.
+
+Test with `npm run test-dev`, which will open your browser. Look at the console log for TAP output.
