@@ -7,8 +7,7 @@
     "lint": "eslint .",
     "demo-bundle": "browserify demo/js -t babelify --extension=.jsx -o demo/demo-bundle.js",
     "demo-watch": "watchify demo/js -d -t babelify --extension=.jsx -o demo/demo-bundle.js",
-    "demo-bs": "browser-sync start --server demo --files=\"demo/**/*.css,demo/index.html,demo/demo-bundle.js\"",
-    "demo-dev": "parallelshell \"npm run demo-watch\" \"npm run demo-bs\"",
+    "demo-dev": "npm run demo-watch & http-server demo",
     "test": "npm run lint"
   },
   "repository": {
@@ -34,18 +33,19 @@
     "no-scroll": "^1.0.2",
     "react": "0.14.x",
     "react-dom": "0.14.x",
-    "react-displace": "^2.0.1"
+    "react-displace": "^2.1.0"
   },
   "devDependencies": {
     "babelify": "7.2.0",
-    "browser-sync": "2.10.1",
-    "browserify": "12.0.1",
+    "browserify": "13.0.0",
     "eslint": "1.10.3",
-    "eslint-plugin-react": "3.12.0",
-    "parallelshell": "2.0.0",
-    "watchify": "3.6.1"
+    "eslint-plugin-react": "3.16.1",
+    "http-server": "0.8.5",
+    "watchify": "3.7.0"
   },
   "babel": {
-    "presets": ["react"]
+    "presets": [
+      "react"
+    ]
   }
 }
