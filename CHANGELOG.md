@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Allow React element `context` to be passed to modal contents (via upgrade of `react-displace`).
+
 ## 2.0.2
 
 - Upgrade `react-displace`.
