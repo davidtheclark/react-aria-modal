@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "demo-bundle": "browserify demo/js -t babelify --extension=.jsx -o demo/demo-bundle.js",
-    "demo-watch": "watchify demo/js -d -t babelify --extension=.jsx -o demo/demo-bundle.js",
+    "demo-watch": "watchify demo/js -v -d -t babelify --extension=.jsx -o demo/demo-bundle.js",
     "demo-dev": "npm run demo-watch & http-server demo",
     "test": "npm run lint"
   },
@@ -36,6 +36,7 @@
     "react-displace": "^2.1.0"
   },
   "devDependencies": {
+    "babel-preset-react": "6.3.13",
     "babelify": "7.2.0",
     "browserify": "13.0.0",
     "eslint": "1.10.3",
