@@ -79,6 +79,7 @@ var DemoOne = React.createClass({
           titleText='demo one'
           onExit={this.deactivateModal}
           initialFocus='#demo-one-deactivate'
+          applicationNode={document.getElementById('my-application')}
         >
           <div className='modal-dialog'>
             <p>
