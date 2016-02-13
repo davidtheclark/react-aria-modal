@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.2.0
 
 - Add `applicationNode` prop.
 
