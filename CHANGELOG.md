@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Add `applicationNode` prop.
+
 ## 2.1.0
 
 - Allow React element `context` to be passed to modal contents (via upgrade of `react-displace`).

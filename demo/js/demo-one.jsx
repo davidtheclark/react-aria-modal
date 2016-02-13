@@ -23,6 +23,7 @@ var DemoOne = React.createClass({
         titleText='demo one'
         onExit={this.deactivateModal}
         initialFocus='#demo-one-deactivate'
+        applicationNode={document.getElementById('application')}
       >
         <div id='demo-one-modal' className='modal'>
           <div className='modal-body'>

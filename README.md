@@ -130,6 +130,14 @@ This function needs to handles the state change of *exiting* (or deactivating) t
 
 Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to *you* instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
 
+### applicationNode
+
+Type: `DOM Node`
+
+Provide your main application node here (which the modal should render outside of), and when the modal is open this application node will receive the attribute `aria-hidden="true"`. This [can help screen readers understand what's going on](https://www.w3.org/WAI/GL/wiki/Using_ARIA_role%3Ddialog_to_implement_a_modal_dialog_box#Description).
+
+This module can't guess your application node, so you have to provide this prop to get the full accessibility benefit.
+
 ### alert
 
 Type: `Boolean`

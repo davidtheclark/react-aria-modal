@@ -11,121 +11,124 @@
   <meta name="description" content="A demo of react-aria-modal">
 </head>
 <body>
+  <div id="application">
 
-  <h1>
-    react-aria-modal demo
-  </h1>
+    <h1>
+      react-aria-modal demo
+    </h1>
 
-  <p>
-    When a modal is active, you should notice the following:
+    <p>
+      When a modal is active, you should notice the following:
+      <ul>
+        <li>
+          Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
+          without returning to the main document beneath.
+        </li>
+        <li>
+          The dialog element has an ARIA <code>role</code> of <code>dialog</code> (or <code>alertdialog</code>).
+        </li>
+        <li>
+          The dialog element has an ARIA attribute designating its title, either <code>aria-label</code> or <code>aria-labelledby</code>.
+        </li>
+        <li>
+          Escape will close the modal.
+        </li>
+        <li>
+          When the modal closes, focus returns to the element that was focused just before the modal activated.
+        </li>
+        <li>
+          By default, clicking on the modal's underlay (outside the dialog element) will close the modal (this can be disabled).
+        </li>
+        <li>
+          Scrolling is frozen on the main document beneath the modal. (Although, sadly, you can still mess with the scrolling using a touch screen.)
+        </li>
+        <li>
+          The modal is appended to the end of <code>document.body</code> instead of its taking up its source-order position within the React component tree.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <span style='font-size:2em;vertical-align:middle;'>&#9756;</span>
+      <a href="https://github.com/davidtheclark/react-aria-modal" style='vertical-align:middle;'>Return to the repository.</a>
+    </p>
+
+    <h2>
+      demo one
+    </h2>
+    <p>
+      This modal
+    </p>
     <ul>
       <li>
-        Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
-        without returning to the main document beneath.
+        has an invisible but still screen-reader-accessible title
       </li>
       <li>
-        The dialog element has an ARIA <code>role</code> of <code>dialog</code> (or <code>alertdialog</code>).
-      </li>
-      <li>
-        The dialog element has an ARIA attribute designating its title, either <code>aria-label</code> or <code>aria-labelledby</code>.
-      </li>
-      <li>
-        Escape will close the modal.
-      </li>
-      <li>
-        When the modal closes, focus returns to the element that was focused just before the modal activated.
-      </li>
-      <li>
-        By default, clicking on the modal's underlay (outside the dialog element) will close the modal (this can be disabled).
-      </li>
-      <li>
-        Scrolling is frozen on the main document beneath the modal. (Although, sadly, you can still mess with the scrolling using a touch screen.)
-      </li>
-      <li>
-        The modal is appended to the end of <code>document.body</code> instead of its taking up its source-order position within the React component tree.
+        places initial focus on the deactivation button
       </li>
     </ul>
-  </p>
+    <div id="demo-one"></div>
 
-  <p>
-    <span style='font-size:2em;vertical-align:middle;'>&#9756;</span>
-    <a href="https://github.com/davidtheclark/react-aria-modal" style='vertical-align:middle;'>Return to the repository.</a>
-  </p>
+    <h2>
+      demo two
+    </h2>
+    <p>
+      This modal
+    </p>
+    <ul>
+      <li>
+        is vertically centered
+      </li>
+      <li>
+        does not close when the underlay is clicked
+      </li>
+      <li>
+        has a visible title (which is also used by the screen-reader)
+      </li>
+      <li>
+        does not deliberately place focus, so the first element in the tab order receives focus
+      </li>
+      <li>
+        has an internally scrolling region
+      </li>
+    </ul>
+    <div id="demo-two"></div>
 
-  <h2>
-    demo one
-  </h2>
-  <p>
-    This modal
-  </p>
-  <ul>
-    <li>
-      has an invisible but still screen-reader-accessible title
-    </li>
-    <li>
-      places initial focus on the deactivation button
-    </li>
-  </ul>
-  <div id="demo-one"></div>
+    <h2>
+      demo three
+    </h2>
+    <p>
+      This modal
+    </p>
+    <ul>
+      <li>
+        is tall enough that scrolling is required to see all of its content
+      </li>
+      <li>
+        Uses <code>focusDialog=true</code>, so the focus trap
+        still works but no focus outline is initially visible
+      </li>
+    </ul>
+    <div id="demo-three"></div>
 
-  <h2>
-    demo two
-  </h2>
-  <p>
-    This modal
-  </p>
-  <ul>
-    <li>
-      is vertically centered
-    </li>
-    <li>
-      does not close when the underlay is clicked
-    </li>
-    <li>
-      has a visible title (which is also used by the screen-reader)
-    </li>
-    <li>
-      does not deliberately place focus, so the first element in the tab order receives focus
-    </li>
-    <li>
-      has an internally scrolling region
-    </li>
-  </ul>
-  <div id="demo-two"></div>
+    <h2>
+      demo four
+    </h2>
+    <p>
+      This modal's active/inactive state is controlled with the <code>mounted</code> prop instead of
+      mounting and unmounting.
+    </p>
+    <div id="demo-four"></div>
 
-  <h2>
-    demo three
-  </h2>
-  <p>
-    This modal
-  </p>
-  <ul>
-    <li>
-      is tall enough that scrolling is required to see all of its content
-    </li>
-    <li>
-      Uses <code>focusDialog=true</code>, so the focus trap
-      still works but no focus outline is initially visible
-    </li>
-  </ul>
-  <div id="demo-three"></div>
+    <h2>
+      demo five
+    </h2>
+    <p>
+      This modal uses some custom classes and special <code>onEnter</code> and <code>onExit</code> functions to enable nice transitions.
+    </p>
+    <div id="demo-five"></div>
 
-  <h2>
-    demo four
-  </h2>
-  <p>
-    This modal's active/inactive state is controlled with the <code>mounted</code> prop instead of
-    mounting and unmounting.
-  </p>
-  <div id="demo-four"></div>
-
-  <h2>
-    demo five
-  </h2>
-  <p>
-    This modal uses some custom classes and special <code>onEnter</code> and <code>onExit</code> functions to enable nice transitions.
-  </p>
-  <div id="demo-five"></div>
+  </div>
 
   <script src="demo-bundle.js"></script>
 </body>
