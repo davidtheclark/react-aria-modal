@@ -31,17 +31,19 @@
   "dependencies": {
     "focus-trap-react": "^2.0.0",
     "no-scroll": "^1.0.2",
-    "react": "0.14.x",
-    "react-dom": "0.14.x",
     "react-displace": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": "0.14.x"
   },
   "devDependencies": {
     "babel-preset-react": "6.3.13",
     "babelify": "7.2.0",
     "browserify": "13.0.0",
     "eslint": "1.10.3",
-    "eslint-plugin-react": "3.16.1",
     "http-server": "0.8.5",
+    "react": "0.14.7",
+    "react-dom": "0.14.7",
     "watchify": "3.7.0"
   },
   "babel": {

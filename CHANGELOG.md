@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Move `react` to `peerDependencies`; remove `react-dom` as dependency.
+
 ## 2.2.1
 
 - Fix `this` bug.
