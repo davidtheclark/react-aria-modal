@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.3
+
+- Add forsaken `bind()`.
+
 ## 2.2.2
 
 - Move `react` to `peerDependencies`; remove `react-dom` as dependency.
