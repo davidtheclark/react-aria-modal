@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Upgrade `focus-trap-react` to add `escapeExits` prop.
+
 ## 2.2.3
 
 - Add forsaken `bind()`.

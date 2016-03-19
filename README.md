@@ -253,9 +253,15 @@ This module does apply various inline styles, though, so be aware that overridin
 
 ### underlayClickExits
 
-Type: `Boolean`, Default `true`
+Type: `Boolean`, Default: `true`
 
 By default, a click on the underlay will exit the modal. Pass `false`, and clicking on the underlay will do nothing.
+
+### escapeExits
+
+Type: `Boolean`, Default: `true`
+
+By default, the Escape key exits the modal. Pass `false`, and it won't.
 
 ### underlayColor
 

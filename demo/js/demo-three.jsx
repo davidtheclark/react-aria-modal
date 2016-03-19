@@ -23,6 +23,7 @@ var DemoOne = React.createClass({
         titleText='demo three'
         onExit={this.deactivateModal}
         focusDialog={true}
+        escapeExits={false}
       >
         <div
           id='demo-three-modal'
