@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.3.0
 
 - Upgrade `focus-trap-react` to add `escapeExits` prop.
 
