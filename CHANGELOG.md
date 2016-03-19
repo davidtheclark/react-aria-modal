@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.3.0
+
+- Upgrade `focus-trap-react` to add `escapeExits` prop.
+
+## 2.2.3
+
+- Add forsaken `bind()`.
+
+## 2.2.2
+
+- Move `react` to `peerDependencies`; remove `react-dom` as dependency.
+
+## 2.2.1
+
+- Fix `this` bug.
+
 ## 2.2.0
 
 - Add `applicationNode` prop.
