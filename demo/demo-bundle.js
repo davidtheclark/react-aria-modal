@@ -307,7 +307,8 @@ var DemoOne = React.createClass({
       {
         titleText: 'demo three',
         onExit: this.deactivateModal,
-        focusDialog: true
+        focusDialog: true,
+        escapeExits: false
       },
       React.createElement(
         'div',
@@ -521,7 +522,6 @@ module.exports = require('./lib/Modal');
 
 },{"./lib/Modal":8}],8:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
 var FocusTrap = require('focus-trap-react');
 var displace = require('react-displace');
 var noScroll = require('no-scroll');
@@ -545,6 +545,7 @@ var Modal = React.createClass({
     underlayClass: PropTypes.string,
     underlayColor: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     underlayClickExits: PropTypes.bool,
+    escapeExits: PropTypes.bool,
     verticallyCenter: PropTypes.bool,
     applicationNode: PropTypes.shape({
       setAttribute: PropTypes.func.isRequired
@@ -555,6 +556,7 @@ var Modal = React.createClass({
     return {
       dialogId: 'react-aria-modal-dialog',
       underlayClickExits: true,
+      escapeExits: true,
       underlayColor: 'rgba(0,0,0,0.5)'
     };
   },
@@ -567,13 +569,14 @@ var Modal = React.createClass({
   },
 
   componentDidMount: function () {
-    if (this.props.onEnter) {
-      this.props.onEnter();
+    var props = this.props;
+    if (props.onEnter) {
+      props.onEnter();
     }
     // Timeout to ensure this happens *after* focus has moved
     setTimeout(function () {
-      if (this.props.applicationNode) {
-        this.props.applicationNode.setAttribute('aria-hidden', 'true');
+      if (props.applicationNode) {
+        props.applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
   },
@@ -586,7 +589,7 @@ var Modal = React.createClass({
   },
 
   checkClick: function (e) {
-    if (ReactDOM.findDOMNode(this.refs.dialog).contains(e.target)) return;
+    if (this.dialogNode && this.dialogNode.contains(e.target)) return;
     this.deactivate();
   },
 
@@ -641,7 +644,9 @@ var Modal = React.createClass({
 
     var dialogProps = {
       key: 'b',
-      ref: 'dialog',
+      ref: function (el) {
+        this.dialogNode = el;
+      }.bind(this),
       role: props.alert ? 'alertdialog' : 'dialog',
       id: props.dialogId,
       className: props.dialogClass,
@@ -664,14 +669,15 @@ var Modal = React.createClass({
 
     return focusTrapFactory({
       initialFocus: props.focusDialog ? '#react-aria-modal-dialog' : props.initialFocus,
-      onDeactivate: this.deactivate
+      onDeactivate: this.deactivate,
+      escapeDeactivates: props.escapeExits
     }, React.DOM.div(underlayProps, childrenArray));
   }
 });
 
 module.exports = displace(Modal);
 
-},{"focus-trap-react":36,"no-scroll":38,"react":170,"react-displace":40,"react-dom":41}],9:[function(require,module,exports){
+},{"focus-trap-react":36,"no-scroll":38,"react":170,"react-displace":40}],9:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -1940,21 +1946,20 @@ module.exports = warning;
 }).call(this,require('_process'))
 },{"./emptyFunction":16,"_process":39}],36:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
 var focusTrap = require('focus-trap');
 
 var PropTypes = React.PropTypes;
+var checkedProps = {
+  onDeactivate: PropTypes.func.isRequired,
+  escapeDeactivates: PropTypes.bool,
+  clickOutsideDeactivates: PropTypes.bool,
+  active: PropTypes.bool,
+  initialFocus: PropTypes.string,
+  tag: PropTypes.string,
+};
 
 var FocusTrap = React.createClass({
-  propTypes: {
-    onDeactivate: PropTypes.func.isRequired,
-    active: PropTypes.bool,
-    className: PropTypes.string,
-    id: PropTypes.string,
-    initialFocus: PropTypes.string,
-    tag: PropTypes.string,
-    style: PropTypes.object,
-  },
+  propTypes: checkedProps,
 
   getDefaultProps: function() {
     return {
@@ -1982,27 +1987,36 @@ var FocusTrap = React.createClass({
   },
 
   activateTrap: function() {
-    focusTrap.activate(ReactDOM.findDOMNode(this), {
+    if (!this.node) return;
+    focusTrap.activate(this.node, {
       onDeactivate: this.props.onDeactivate,
       initialFocus: this.props.initialFocus,
+      escapeDeactivates: this.props.escapeDeactivates,
+      clickOutsideDeactivates: this.props.clickOutsideDeactivates,
     });
   },
 
   render: function() {
-    return React.createElement(this.props.tag,
-      {
-        className: this.props.className,
-        id: this.props.id,
-        style: this.props.style,
-      },
-      this.props.children
-    );
+    var props = this.props;
+
+    var elementProps = {
+      ref: function(el) { this.node = el; }.bind(this),
+    };
+
+    // This will get id, className, style, etc. -- arbitrary element props
+    for (var prop in props) {
+      if (!props.hasOwnProperty(prop)) continue;
+      if (checkedProps[prop]) continue;
+      elementProps[prop] = props[prop];
+    }
+
+    return React.createElement(this.props.tag, elementProps, this.props.children);
   },
 });
 
 module.exports = FocusTrap;
 
-},{"focus-trap":37,"react":170,"react-dom":41}],37:[function(require,module,exports){
+},{"focus-trap":37,"react":170}],37:[function(require,module,exports){
 var tabbable = require('tabbable');
 
 var trap;
@@ -2019,7 +2033,10 @@ function activate(element, options) {
   trap = (typeof element === 'string')
     ? document.querySelector(element)
     : element;
+
   config = options || {};
+  if (config.escapeDeactivates === undefined) config.escapeDeactivates = true;
+
   previouslyFocused = document.activeElement;
 
   updateTabbableNodes();
@@ -2070,8 +2087,13 @@ function deactivate() {
 
 function checkClick(e) {
   if (trap.contains(e.target)) return;
-  e.preventDefault();
-  e.stopImmediatePropagation();
+  if (config.clickOutsideDeactivates) {
+    deactivate();
+    e.target.focus();
+  } else {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
 }
 
 function checkFocus(e) {
@@ -2085,7 +2107,7 @@ function checkKey(e) {
     handleTab(e);
   }
 
-  if (e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27) {
+  if (config.escapeDeactivates && isEscapeEvent(e)) {
     deactivate();
   }
 }
@@ -2116,7 +2138,15 @@ function updateTabbableNodes() {
 }
 
 function tryFocus(node) {
-  if (node && node.focus) node.focus();
+  if (!node || !node.focus) return;
+  node.focus();
+  if (node.tagName.toLowerCase() === 'input') {
+    node.select();
+  }
+}
+
+function isEscapeEvent(e) {
+  return e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27;
 }
 
 module.exports = {
@@ -2322,6 +2352,10 @@ module.exports = function(Content, options) {
 
     componentWillUnmount: function() {
       this.removeDisplaced();
+
+      if (!options.renderTo) {
+        this.container.parentNode.removeChild(this.container);
+      }
     },
 
     renderDisplaced: function() {
