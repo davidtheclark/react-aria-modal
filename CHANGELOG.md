@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Allow React 15 as peer dependency.
+
 ## 2.3.0
 
 - Upgrade `focus-trap-react` to add `escapeExits` prop.
