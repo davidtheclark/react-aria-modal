@@ -294,7 +294,7 @@ var MyModal = React.createClass({
         alert={true}
         focusDialog={true}
         titleId='modal-title'
-        underlayClickExists={false}
+        underlayClickExits={false}
         verticallyCenter={true}
       >
         <div
