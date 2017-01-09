@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
-    "focus-trap-react": "^2.1.1",
-    "no-scroll": "^1.0.2",
+    "focus-trap-react": "^3.0.1",
+    "no-scroll": "^2.0.0",
     "react-displace": "^2.1.1"
   },
   "peerDependencies": {
@@ -40,7 +40,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "budo": "^9.4.1",
-    "eslint": "^1.10.3",
+    "eslint": "^3.13.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
   },

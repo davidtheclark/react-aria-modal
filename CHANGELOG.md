@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Upgrade `no-scroll` and `focus-trap-react` dependencies.
+
 ## 2.3.1
 
 - Allow React 15 as peer dependency.
