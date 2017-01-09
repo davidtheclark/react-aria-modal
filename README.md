@@ -316,4 +316,4 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 Lint with `npm run lint`.
 
-Test with `npm run test-dev`, which will open your browser. Look at the console log for TAP output.
+Test the demos with `npm start`.
