@@ -6,8 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "demo-bundle": "browserify demo/js -t babelify --extension=.jsx -o demo/demo-bundle.js",
-    "demo-watch": "watchify demo/js -v -d -t babelify --extension=.jsx -o demo/demo-bundle.js",
-    "demo-dev": "npm run demo-watch & http-server demo",
+    "start": "budo demo/js/index.js:demo-bundle.js --dir demo -- -t babelify --extension=.jsx -o demo/demo-bundle.js",
     "test": "npm run lint"
   },
   "repository": {
@@ -37,14 +36,13 @@
     "react": "0.14.x || ^15.0.0"
   },
   "devDependencies": {
-    "babel-preset-react": "6.5.0",
-    "babelify": "7.2.0",
-    "browserify": "13.0.0",
-    "eslint": "1.10.3",
-    "http-server": "0.9.0",
-    "react": "15.0.1",
-    "react-dom": "15.0.1",
-    "watchify": "3.7.0"
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "budo": "^9.4.1",
+    "eslint": "^1.10.3",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
   },
   "babel": {
     "presets": [
