@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.4.0
 
 - Add `getApplicationNode` prop.
 - Upgrade `no-scroll` and `focus-trap-react` dependencies.
