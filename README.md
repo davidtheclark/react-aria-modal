@@ -68,6 +68,10 @@ var DemoOne = React.createClass({
     this.setState({ modalActive: false });
   },
 
+  getApplicationNode: function() {
+    return document.getElementById('my-application');
+  },
+
   render: function() {
     return (
       <div>
@@ -79,7 +83,7 @@ var DemoOne = React.createClass({
           titleText='demo one'
           onExit={this.deactivateModal}
           initialFocus='#demo-one-deactivate'
-          applicationNode={document.getElementById('my-application')}
+          getApplicationNode={this.getApplicationNode}
         >
           <div className='modal-dialog'>
             <p>
@@ -138,6 +142,12 @@ Type: `DOM Node`
 Provide your main application node here (which the modal should render outside of), and when the modal is open this application node will receive the attribute `aria-hidden="true"`. This [can help screen readers understand what's going on](https://www.w3.org/WAI/GL/wiki/Using_ARIA_role%3Ddialog_to_implement_a_modal_dialog_box#Description).
 
 This module can't guess your application node, so you have to provide this prop to get the full accessibility benefit.
+
+### getApplicationNode
+
+Type: `Function`
+
+Same as `applicationNode`, but a function that returns the node instead of the node itself. This can be useful or necessary in a variety of situations, one of which is server-side React rendering. The function will not be called until after the component mounts, so it is safe to use browser globals and refer to DOM nodes within it (e.g. `document.getElementById(..)`), without ruining your server-side rendering.
 
 ### alert
 

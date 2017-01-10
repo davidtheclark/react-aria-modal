@@ -17,13 +17,17 @@ var DemoOne = React.createClass({
     this.setState({ modalActive: false });
   },
 
+  getApplicationNode: function() {
+    return document.getElementById('application');
+  },
+
   render: function() {
     var modal = (this.state.modalActive) ? (
       <AriaModal
         titleText='demo one'
         onExit={this.deactivateModal}
         initialFocus='#demo-one-deactivate'
-        applicationNode={document.getElementById('application')}
+        getApplicationNode={this.getApplicationNode}
       >
         <div id='demo-one-modal' className='modal'>
           <div className='modal-body'>

@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "demo-bundle": "browserify demo/js -t babelify --extension=.jsx -o demo/demo-bundle.js",
-    "start": "budo demo/js/index.js:demo-bundle.js --dir demo -- -t babelify --extension=.jsx -o demo/demo-bundle.js",
+    "start": "budo demo/js/index.js:demo-bundle.js --live --dir demo -- -t babelify --extension=.jsx -o demo/demo-bundle.js",
     "test": "npm run lint"
   },
   "repository": {
