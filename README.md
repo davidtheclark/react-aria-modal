@@ -282,6 +282,12 @@ If you want to change the underlay's color, you can do that with this prop.
 If `false`, no background color will be applied with inline styles.
 Presumably you will apply then yourself via an `underlayClass`.
 
+### underlayStyle
+
+Type: `object`
+
+Customize properties of the `style` prop that is passed to the underlay.
+
 ### verticallyCenter
 
 Type: `boolean`

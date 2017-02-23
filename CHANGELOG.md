@@ -3,6 +3,7 @@
 ## Head
 
 - Add `renderTo` prop.
+- Add `underlayStyle` prop.
 
 ## 2.4.0
 

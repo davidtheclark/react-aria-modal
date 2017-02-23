@@ -29,6 +29,10 @@ var DemoSix = React.createClass({
         initialFocus='#demo-six-deactivate'
         getApplicationNode={this.getApplicationNode}
         renderTo='#demo-six-container'
+        underlayStyle={{
+          zIndex: 100,
+          background: 'rgba(255, 192, 203, 0.5)'
+        }}
       >
         <div id='demo-six-modal' className='modal'>
           <div className='modal-body'>
