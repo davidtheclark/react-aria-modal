@@ -1,7 +1,5 @@
 .modal {
   background: #fff;
-  margin-top: 2em;
-  margin-bottom: 2em;
   outline: 0;
   min-width: 250px;
   max-width: 500px;
@@ -28,7 +26,7 @@
 }
 
 .modal--animated {
-  opacity: 0;
+  opacity: 0.3;
   transform: scale(1.1) translateY(-10px);
   -webkit-transform: scale(1.1) translateY(-10px);
   transition: all 0.3s linear;

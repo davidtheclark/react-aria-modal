@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.5.0
+
+- Add `renderTo` static method.
+- Add `underlayStyle` prop.
+
+## 2.4.0
+
+- Add `getApplicationNode` prop.
+- Upgrade `no-scroll` and `focus-trap-react` dependencies.
+
+## 2.3.1
+
+- Allow React 15 as peer dependency.
+
 ## 2.3.0
 
 - Upgrade `focus-trap-react` to add `escapeExits` prop.

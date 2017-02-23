@@ -28,6 +28,7 @@ var DemoFour = React.createClass({
           onExit={this.deactivateModal}
           initialFocus='#demo-four-deactivate'
           mounted={this.state.modalActive}
+          underlayStyle={{ paddingTop: '2em' }}
         >
           <div id='demo-four-modal' className='modal'>
             <div className='modal-body'>

@@ -49,6 +49,7 @@ var DemoFive = React.createClass({
           mounted={this.state.modalActive}
           underlayColor={false}
           underlayClass={underlayClass}
+          underlayStyle={{ paddingTop: '2em' }}
         >
           <div id='demo-five-modal' className={dialogContentClass}>
             <div className='modal-body'>

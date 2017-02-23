@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var AriaModal = require('../../');
 
-var DemoOne = React.createClass({
+var DemoSix = React.createClass({
   getInitialState: function() {
     return {
       modalActive: false,
@@ -22,27 +22,34 @@ var DemoOne = React.createClass({
   },
 
   render: function() {
+    var AlternateLocationAriaModal = AriaModal.renderTo('#demo-six-container');
+
     var modal = (this.state.modalActive) ? (
-      <AriaModal
-        titleText='demo one'
+      <AlternateLocationAriaModal
+        titleText='demo six'
         onExit={this.deactivateModal}
-        initialFocus='#demo-one-deactivate'
+        initialFocus='#demo-six-deactivate'
         getApplicationNode={this.getApplicationNode}
-        underlayStyle={{ paddingTop: '2em' }}
+        underlayStyle={{
+          zIndex: 100,
+          background: 'rgba(255, 192, 203, 0.5)',
+          position: 'absolute',
+          paddingTop: '4em'
+        }}
       >
-        <div id='demo-one-modal' className='modal'>
+        <div id='demo-six-modal' className='modal'>
           <div className='modal-body'>
             <p>
               Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
             </p>
           </div>
           <footer className='modal-footer'>
-            <button id='demo-one-deactivate' onClick={this.deactivateModal}>
+            <button id='demo-six-deactivate' onClick={this.deactivateModal}>
               deactivate modal
             </button>
           </footer>
         </div>
-      </AriaModal>
+      </AlternateLocationAriaModal>
     ) : false;
 
     return (
@@ -56,4 +63,4 @@ var DemoOne = React.createClass({
   },
 });
 
-ReactDOM.render(<DemoOne />, document.getElementById('demo-one'));
+ReactDOM.render(<DemoSix />, document.getElementById('demo-six'));
