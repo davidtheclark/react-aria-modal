@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 2.5.0
 
 - Add `renderTo` static method.
 - Add `underlayStyle` prop.
