@@ -24,6 +24,7 @@ var DemoOne = React.createClass({
         onExit={this.deactivateModal}
         focusDialog={true}
         escapeExits={false}
+        underlayStyle={{ paddingTop: '2em' }}
       >
         <div
           id='demo-three-modal'

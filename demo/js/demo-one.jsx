@@ -28,6 +28,7 @@ var DemoOne = React.createClass({
         onExit={this.deactivateModal}
         initialFocus='#demo-one-deactivate'
         getApplicationNode={this.getApplicationNode}
+        underlayStyle={{ paddingTop: '2em' }}
       >
         <div id='demo-one-modal' className='modal'>
           <div className='modal-body'>

@@ -22,16 +22,19 @@ var DemoSix = React.createClass({
   },
 
   render: function() {
+    var AlternateLocationAriaModal = AriaModal.renderTo('#demo-six-container');
+
     var modal = (this.state.modalActive) ? (
-      <AriaModal
+      <AlternateLocationAriaModal
         titleText='demo six'
         onExit={this.deactivateModal}
         initialFocus='#demo-six-deactivate'
         getApplicationNode={this.getApplicationNode}
-        renderTo='#demo-six-container'
         underlayStyle={{
           zIndex: 100,
-          background: 'rgba(255, 192, 203, 0.5)'
+          background: 'rgba(255, 192, 203, 0.5)',
+          position: 'absolute',
+          paddingTop: '4em'
         }}
       >
         <div id='demo-six-modal' className='modal'>
@@ -46,7 +49,7 @@ var DemoSix = React.createClass({
             </button>
           </footer>
         </div>
-      </AriaModal>
+      </AlternateLocationAriaModal>
     ) : false;
 
     return (

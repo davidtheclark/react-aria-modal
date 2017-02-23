@@ -253,6 +253,15 @@ A string to use as the modal's accessible title. This value is passed to the mod
 
 You must use either `titleId` or `titleText`, but not both.
 
+
+### underlayStyle
+
+Type: `object`
+
+Customize properties of the `style` prop that is passed to the underlay.
+
+**The best way to add some vertical displacement to the dialog is to add top & bottom padding to the underlay**. This is illustrated in the demo examples.
+
 ### underlayClass
 
 Type: `string`
@@ -282,25 +291,21 @@ If you want to change the underlay's color, you can do that with this prop.
 If `false`, no background color will be applied with inline styles.
 Presumably you will apply then yourself via an `underlayClass`.
 
-### underlayStyle
-
-Type: `object`
-
-Customize properties of the `style` prop that is passed to the underlay.
-
 ### verticallyCenter
 
 Type: `boolean`
 
 If `true`, the modal's contents will be vertically (as well as horizontally) centered.
 
-### renderTo
+## AriaModal.renderTo(HTMLElement | string)
 
-Type: `HTMLElement` or `string` selector
+react-aria-modal uses [react-displace](https://github.com/davidtheclark/react-displace) to insert the modal into a new element at the end of `<body>`, making it easier to deal with positioning and z-indexes.
 
-react-aria-modal uses [react-displace](https://github.com/davidtheclark/react-displace) to insert the modal into a new element at the end of `<body>`, making it easier to deal with positioning and z-indexes. Use this prop to specify an alternative element into which the modal should be rendered.
+The static `renderTo` function returns *a new component* that renders modals into a specific element, rather than a newly created element at the bottom of the page.
 
 Strings are used as selectors, passed to `querySelector`.
+
+See demo six for an example.
 
 ## More examples
 
