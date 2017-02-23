@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- Add `renderTo` prop.
+
 ## 2.4.0
 
 - Add `getApplicationNode` prop.

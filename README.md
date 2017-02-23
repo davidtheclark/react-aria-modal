@@ -239,7 +239,7 @@ Demo Five, for example, uses it to modify class names and enable some CSS transi
 
 ### titleId
 
-Type: `String`
+Type: `string`
 
 The id of the element that should be used as the modal's accessible title. This value is passed to the modal's `aria-labelledby` attribute.
 
@@ -247,7 +247,7 @@ You must use either `titleId` or `titleText`, but not both.
 
 ### titleText
 
-Type: `String`
+Type: `string`
 
 A string to use as the modal's accessible title. This value is passed to the modal's `aria-label` attribute.
 
@@ -255,7 +255,7 @@ You must use either `titleId` or `titleText`, but not both.
 
 ### underlayClass
 
-Type: `String`
+Type: `string`
 
 Apply a class to the underlay in order to custom-style it.
 
@@ -263,19 +263,19 @@ This module does apply various inline styles, though, so be aware that overridin
 
 ### underlayClickExits
 
-Type: `Boolean`, Default: `true`
+Type: `boolean`, Default: `true`
 
 By default, a click on the underlay will exit the modal. Pass `false`, and clicking on the underlay will do nothing.
 
 ### escapeExits
 
-Type: `Boolean`, Default: `true`
+Type: `boolean`, Default: `true`
 
 By default, the Escape key exits the modal. Pass `false`, and it won't.
 
 ### underlayColor
 
-Type: `String` (color value) or `false`, Default: `rgba(0,0,0,0.5)`
+Type: `string` (color value) or `false`, Default: `rgba(0,0,0,0.5)`
 
 If you want to change the underlay's color, you can do that with this prop.
 
@@ -284,9 +284,17 @@ Presumably you will apply then yourself via an `underlayClass`.
 
 ### verticallyCenter
 
-Type: `Boolean`
+Type: `boolean`
 
 If `true`, the modal's contents will be vertically (as well as horizontally) centered.
+
+### renderTo
+
+Type: `HTMLElement` or `string` selector
+
+react-aria-modal uses [react-displace](https://github.com/davidtheclark/react-displace) to insert the modal into a new element at the end of `<body>`, making it easier to deal with positioning and z-indexes. Use this prop to specify an alternative element into which the modal should be rendered.
+
+Strings are used as selectors, passed to `querySelector`.
 
 ## More examples
 
