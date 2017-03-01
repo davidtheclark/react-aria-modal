@@ -52,7 +52,7 @@ Just provide the right props (see below) and pass the content of the modal as th
 
 Look in `demo/js/` for example code. (And see what they look like [here]((http://davidtheclark.github.io/react-aria-modal/demo/).) But here's a simple example.
 
-```js
+```jsx
 var AriaModal = require('react-aria-modal');
 
 var DemoOne = React.createClass({
@@ -196,7 +196,7 @@ However, you can also control its active/inactive state by changing its `mounted
 
 The following two examples are near-equivalents — the first mounts and unmounts, while the second changes the `mounted` prop:
 
-```js
+```jsx
 var MyComponent = React.createClass({
   ..
   render: function() {
@@ -311,7 +311,7 @@ See demo six for an example.
 
 An alert dialog that itself receives initial focus (but has no visible outline) and does not exit when the underlay is clicked, and is vertically centered:
 
-```js
+```jsx
 var AriaModal = require('react-aria-modal');
 
 var MyModal = React.createClass({
