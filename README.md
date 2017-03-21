@@ -155,6 +155,14 @@ Type: `Boolean`
 
 If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`.
 
+### defaultStyles
+
+Type: `Boolean`
+
+By default, styles are applied inline to the  dialog and underlay portions of the component.  However, you can disable all inline styles by setting `defaultStyles` to `false`.  If set, *you must specify all styles externally*, including positioning.  This is helpful if your project uses external CSS assets.
+
+*Note:* `underlayStyle` can still be set inline, but these will be the only styles applied.
+
 ### dialogClass
 
 Type: `String`
