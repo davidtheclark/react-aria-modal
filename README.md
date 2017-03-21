@@ -169,13 +169,19 @@ Type: `String`
 
 Apply a class to the dialog in order to custom-style it.
 
-Be aware that this module does apply various inline styles to the dialog element in order position it.
+Be aware that this module does apply various inline styles to the dialog element in order position it.  To disable *all inline styles*, see `defaultStyles`.
 
 ### dialogId
 
 Type: `String`, Default: `react-aria-modal-dialog`
 
 Choose your own id attribute for the dialog element.
+
+### dialogStyle
+
+Type: `Object`
+
+Customize properties of the `style` prop that is passed to the dialog.
 
 ### focusDialog
 
@@ -276,7 +282,7 @@ Type: `string`
 
 Apply a class to the underlay in order to custom-style it.
 
-This module does apply various inline styles, though, so be aware that overriding some styles might be difficult. If, for example, you want to change the underlay's color, you should probably use the `underlayColor` prop instead of a class.
+This module does apply various inline styles, though, so be aware that overriding some styles might be difficult. If, for example, you want to change the underlay's color, you should probably use the `underlayColor` prop instead of a class.  If you would rather control *all CSS*, see `defaultStyles`.
 
 ### underlayClickExits
 
