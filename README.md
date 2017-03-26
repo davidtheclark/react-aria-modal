@@ -155,11 +155,11 @@ Type: `Boolean`
 
 If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`.
 
-### defaultStyles
+### includeDefaultStyles
 
-Type: `Boolean`
+Type: `Boolean`, Default: `true`
 
-By default, styles are applied inline to the  dialog and underlay portions of the component.  However, you can disable all inline styles by setting `defaultStyles` to `false`.  If set, *you must specify all styles externally*, including positioning.  This is helpful if your project uses external CSS assets.
+By default, styles are applied inline to the  dialog and underlay portions of the component.  However, you can disable all inline styles by setting `includeDefaultStyles` to `false`.  If set, *you must specify all styles externally*, including positioning.  This is helpful if your project uses external CSS assets.
 
 *Note:* `underlayStyle` can still be set inline, but these will be the only styles applied.
 
@@ -169,7 +169,7 @@ Type: `String`
 
 Apply a class to the dialog in order to custom-style it.
 
-Be aware that this module does apply various inline styles to the dialog element in order position it.  To disable *all inline styles*, see `defaultStyles`.
+Be aware that, *by default*, this module does apply various inline styles to the dialog element in order position it. To disable *all inline styles*, see `includeDefaultStyles`.
 
 ### dialogId
 
@@ -282,7 +282,7 @@ Type: `string`
 
 Apply a class to the underlay in order to custom-style it.
 
-This module does apply various inline styles, though, so be aware that overriding some styles might be difficult. If, for example, you want to change the underlay's color, you should probably use the `underlayColor` prop instead of a class.  If you would rather control *all CSS*, see `defaultStyles`.
+This module does apply various inline styles, though, so be aware that overriding some styles might be difficult. If, for example, you want to change the underlay's color, you should probably use the `underlayColor` prop instead of a class. If you would rather control *all CSS*, see `includeDefaultStyles`.
 
 ### underlayClickExits
 
