@@ -161,7 +161,7 @@ Type: `Boolean`, Default: `true`
 
 By default, styles are applied inline to the  dialog and underlay portions of the component.  However, you can disable all inline styles by setting `includeDefaultStyles` to `false`.  If set, *you must specify all styles externally*, including positioning.  This is helpful if your project uses external CSS assets.
 
-*Note:* `underlayStyle` can still be set inline, but these will be the only styles applied.
+*Note:* `underlayStyle` and `dialogStyle` can still be set inline, but these will be the only styles applied.
 
 ### dialogClass
 
