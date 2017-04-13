@@ -1,30 +1,37 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var AriaModal = require('../../');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const AriaModal = require('../../');
 
-var DemoSix = React.createClass({
-  getInitialState: function() {
-    return {
+class DemoSix extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
       modalActive: false,
     };
-  },
 
-  activateModal: function() {
+    this.activateModal = this.activateModal.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
+    this.getApplicationNode = this.getApplicationNode.bind(this);
+  }
+
+  activateModal() {
     this.setState({ modalActive: true });
-  },
+  }
 
-  deactivateModal: function() {
+  deactivateModal() {
     this.setState({ modalActive: false });
-  },
+  }
 
-  getApplicationNode: function() {
+  getApplicationNode() {
     return document.getElementById('application');
-  },
+  }
 
-  render: function() {
-    var AlternateLocationAriaModal = AriaModal.renderTo('#demo-six-container');
+  render() {
+    const AlternateLocationAriaModal = AriaModal.renderTo('#demo-six-container');
 
-    var modal = (this.state.modalActive) ? (
+    const modal = (this.state.modalActive) ? (
       <AlternateLocationAriaModal
         titleText='demo six'
         onExit={this.deactivateModal}
@@ -60,7 +67,8 @@ var DemoSix = React.createClass({
         {modal}
       </div>
     )
-  },
-});
+  }
+
+}
 
 ReactDOM.render(<DemoSix />, document.getElementById('demo-six'));

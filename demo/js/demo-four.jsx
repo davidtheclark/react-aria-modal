@@ -1,23 +1,29 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var AriaModal = require('../../');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const AriaModal = require('../../');
 
-var DemoFour = React.createClass({
-  getInitialState: function() {
-    return {
+class DemoFour extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
       modalActive: false,
     };
-  },
 
-  activateModal: function() {
+    this.activateModal = this.activateModal.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
+  }
+
+  activateModal() {
     this.setState({ modalActive: true });
-  },
+  }
 
-  deactivateModal: function() {
+  deactivateModal() {
     this.setState({ modalActive: false });
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div>
         <button onClick={this.activateModal}>
@@ -33,7 +39,8 @@ var DemoFour = React.createClass({
           <div id='demo-four-modal' className='modal'>
             <div className='modal-body'>
               <p>
-                Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
+                Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a>
+                parts.
               </p>
             </div>
             <footer className='modal-footer'>
@@ -45,7 +52,8 @@ var DemoFour = React.createClass({
         </AriaModal>
       </div>
     )
-  },
-});
+  }
+
+}
 
 ReactDOM.render(<DemoFour />, document.getElementById('demo-four'));
