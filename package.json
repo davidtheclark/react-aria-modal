@@ -1,13 +1,15 @@
 {
   "name": "react-aria-modal",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "A fully accessible and flexible React modal built according WAI-ARIA Authoring Practices",
-  "main": "index.js",
+  "main": "dist/modal.js",
   "scripts": {
     "lint": "eslint .",
-    "format": "prettier --single-quote --write index.js lib/*.js test/*.js demo/js/*.js",
+    "format": "prettier --single-quote --write src/*.js test/*.js demo/js/*.js",
     "demo-bundle": "browserify demo/js -t babelify -o demo/demo-bundle.js",
     "start": "budo demo/js/index.js:demo-bundle.js --live --dir demo -- -t babelify -o demo/demo-bundle.js",
+    "build": "babel src -d dist",
+    "prepublish": "npm run build",
     "test": "npm run lint"
   },
   "repository": {
@@ -29,7 +31,7 @@
   },
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
-    "focus-trap-react": "^3.0.1",
+    "focus-trap-react": "^3.0.3",
     "no-scroll": "^2.0.0",
     "prop-types": "^15.5.8",
     "react-displace": "^2.1.4"
