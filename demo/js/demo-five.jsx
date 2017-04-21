@@ -1,37 +1,45 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var AriaModal = require('../../');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const AriaModal = require('../../');
 
-var DemoFive = React.createClass({
-  getInitialState: function() {
-    return {
+class DemoFive extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
       modalActive: false,
     };
-  },
 
-  activateModal: function() {
+    this.activateModal = this.activateModal.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
+    this.onModalEnter = this.onModalEnter.bind(this);
+  }
+
+  activateModal() {
     this.setState({ modalActive: true });
-  },
+  }
 
-  deactivateModal: function() {
+  deactivateModal() {
     this.setState({
       modalHasEntered: false,
-    }, function() {
-      setTimeout(function() {
+    }, function () {
+      setTimeout(function () {
         this.setState({
           modalActive: false,
         });
       }.bind(this), 300);
     });
-  },
+  }
 
-  onModalEnter: function() {
+  onModalEnter() {
     this.setState({ modalHasEntered: true });
-  },
+  }
 
-  render: function() {
-    var dialogContentClass = 'modal modal--animated';
-    var underlayClass = 'underlay';
+
+  render() {
+    let dialogContentClass = 'modal modal--animated';
+    let underlayClass = 'underlay';
     if (this.state.modalHasEntered) {
       dialogContentClass += ' has-entered';
       underlayClass += ' has-entered';
@@ -54,7 +62,8 @@ var DemoFive = React.createClass({
           <div id='demo-five-modal' className={dialogContentClass}>
             <div className='modal-body'>
               <p>
-                Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a> parts.
+                Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a>
+                parts.
               </p>
             </div>
             <footer className='modal-footer'>
@@ -66,7 +75,8 @@ var DemoFive = React.createClass({
         </AriaModal>
       </div>
     )
-  },
-});
+  }
+
+}
 
 ReactDOM.render(<DemoFive />, document.getElementById('demo-five'));
