@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      modalOpen: false,
+      modalOpen: false
     };
 
     this.openModal = this.openModal.bind(this);
@@ -23,18 +23,15 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      React.DOM.div(
-        React.DOM.button('open modal', {
-          onClick: this.openModal,
-        }),
-        React.createElement(AriaModal, {
-          onExit: this.closeModal,
-        })
-      )
+    return React.DOM.div(
+      React.DOM.button('open modal', {
+        onClick: this.openModal
+      }),
+      React.createElement(AriaModal, {
+        onExit: this.closeModal
+      })
     );
   }
-
 }
 
 console.log(ReactDOMServer.renderToString(React.createElement(App)));
