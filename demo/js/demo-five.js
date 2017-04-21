@@ -3,12 +3,11 @@ const ReactDOM = require('react-dom');
 const AriaModal = require('../../');
 
 class DemoFive extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      modalActive: false,
+      modalActive: false
     };
 
     this.activateModal = this.activateModal.bind(this);
@@ -16,26 +15,28 @@ class DemoFive extends React.Component {
     this.onModalEnter = this.onModalEnter.bind(this);
   }
 
-  activateModal() {
+  activateModal = () => {
     this.setState({ modalActive: true });
-  }
+  };
 
-  deactivateModal() {
-    this.setState({
-      modalHasEntered: false,
-    }, function () {
-      setTimeout(function () {
-        this.setState({
-          modalActive: false,
-        });
-      }.bind(this), 300);
-    });
-  }
+  deactivateModal = () => {
+    this.setState(
+      {
+        modalHasEntered: false
+      },
+      () => {
+        setTimeout(() => {
+          this.setState({
+            modalActive: false
+          });
+        }, 300);
+      }
+    );
+  };
 
-  onModalEnter() {
+  onModalEnter = () => {
     this.setState({ modalHasEntered: true });
-  }
-
+  };
 
   render() {
     let dialogContentClass = 'modal modal--animated';
@@ -50,7 +51,7 @@ class DemoFive extends React.Component {
           activate modal
         </button>
         <AriaModal
-          titleText='demo five'
+          titleText="demo five"
           onEnter={this.onModalEnter}
           onExit={this.deactivateModal}
           focusDialog={true}
@@ -59,24 +60,29 @@ class DemoFive extends React.Component {
           underlayClass={underlayClass}
           underlayStyle={{ paddingTop: '2em' }}
         >
-          <div id='demo-five-modal' className={dialogContentClass}>
-            <div className='modal-body'>
+          <div id="demo-five-modal" className={dialogContentClass}>
+            <div className="modal-body">
               <p>
-                Here is a modal <a href='#'>with</a> <a href='#'>some</a> <a href='#'>focusable</a>
+                Here is a modal
+                {' '}
+                <a href="#">with</a>
+                {' '}
+                <a href="#">some</a>
+                {' '}
+                <a href="#">focusable</a>
                 parts.
               </p>
             </div>
-            <footer className='modal-footer'>
-              <button id='demo-five-deactivate' onClick={this.deactivateModal}>
+            <footer className="modal-footer">
+              <button id="demo-five-deactivate" onClick={this.deactivateModal}>
                 deactivate modal
               </button>
             </footer>
           </div>
         </AriaModal>
       </div>
-    )
+    );
   }
-
 }
 
 ReactDOM.render(<DemoFive />, document.getElementById('demo-five'));

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.5.1
+
+- Introduce `dist/react-aria-modal.js`, where `src/` now compiles to, since React 15.5+ demands `class`es, so Babel-compilation.
+  Which is actually a huge overhaul, though in semver it's just a patch.
+
 ## 2.5.0
 
 - Add `renderTo` static method.

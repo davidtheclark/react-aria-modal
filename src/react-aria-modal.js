@@ -3,11 +3,9 @@ const FocusTrap = require('focus-trap-react');
 const displace = require('react-displace');
 const noScroll = require('no-scroll');
 
-const PropTypes = require('prop-types');
 const focusTrapFactory = React.createFactory(FocusTrap);
 
 class Modal extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -17,7 +15,9 @@ class Modal extends React.Component {
 
   componentWillMount() {
     if (!this.props.titleText && !this.props.titleId) {
-      throw new Error('react-aria-modal instances should have a `titleText` or `titleId`');
+      throw new Error(
+        'react-aria-modal instances should have a `titleText` or `titleId`'
+      );
     }
     noScroll.on();
   }
@@ -44,19 +44,19 @@ class Modal extends React.Component {
     }
   }
 
-  getApplicationNode() {
+  getApplicationNode = () => {
     if (this.props.getApplicationNode) return this.props.getApplicationNode();
     return this.props.applicationNode;
-  }
+  };
 
-  checkClick(event) {
+  checkClick = event => {
     if (this.dialogNode && this.dialogNode.contains(event.target)) return;
     this.deactivate();
-  }
+  };
 
-  deactivate() {
+  deactivate = () => {
     this.props.onExit();
-  }
+  };
 
   render() {
     const props = this.props;
@@ -71,7 +71,7 @@ class Modal extends React.Component {
       overflowX: 'hidden',
       overflowY: 'auto',
       WebkitOverflowScrolling: 'touch',
-      textAlign: 'center',
+      textAlign: 'center'
     };
     if (props.underlayColor) {
       style.background = props.underlayColor;
@@ -88,7 +88,7 @@ class Modal extends React.Component {
 
     const underlayProps = {
       className: props.underlayClass,
-      style: style,
+      style: style
     };
 
     if (props.underlayClickExits) {
@@ -100,16 +100,16 @@ class Modal extends React.Component {
       style: {
         display: 'inline-block',
         height: '100%',
-        verticalAlign: 'middle',
-      },
+        verticalAlign: 'middle'
+      }
     };
 
     const dialogStyle = {
       display: 'inline-block',
       textAlign: 'left',
-      top: (props.verticallyCenter) ? '50%' : 0,
+      top: props.verticallyCenter ? '50%' : 0,
       maxWidth: '100%',
-      cursor: 'default',
+      cursor: 'default'
     };
     if (props.verticallyCenter) {
       dialogStyle.verticalAlign = 'middle';
@@ -120,10 +120,10 @@ class Modal extends React.Component {
       ref: function(el) {
         this.dialogNode = el;
       }.bind(this),
-      role: (props.alert) ? 'alertdialog' : 'dialog',
+      role: props.alert ? 'alertdialog' : 'dialog',
       id: props.dialogId,
       className: props.dialogClass,
-      style: dialogStyle,
+      style: dialogStyle
     };
     if (props.titleId) {
       dialogProps['aria-labelledby'] = props.titleId;
@@ -135,9 +135,7 @@ class Modal extends React.Component {
       dialogProps.style.outline = 0;
     }
 
-    const childrenArray = [
-      React.DOM.div(dialogProps, props.children),
-    ];
+    const childrenArray = [React.DOM.div(dialogProps, props.children)];
     if (props.verticallyCenter) {
       childrenArray.unshift(React.DOM.div(verticalCenterHelperProps));
     }
@@ -145,46 +143,23 @@ class Modal extends React.Component {
     return focusTrapFactory(
       {
         focusTrapOptions: {
-          initialFocus: (props.focusDialog)
+          initialFocus: props.focusDialog
             ? '#react-aria-modal-dialog'
             : props.initialFocus,
           escapeDeactivates: props.escapeExits,
-          onDeactivate: this.deactivate,
-        },
+          onDeactivate: this.deactivate
+        }
       },
       React.DOM.div(underlayProps, childrenArray)
     );
   }
-
 }
 
 Modal.defaultProps = {
   dialogId: 'react-aria-modal-dialog',
   underlayClickExits: true,
   escapeExits: true,
-  underlayColor: 'rgba(0,0,0,0.5)',
-};
-
-Modal.propTypes = {
-  onExit: PropTypes.func.isRequired,
-  alert: PropTypes.bool,
-  dialogClass: PropTypes.string,
-  dialogId: PropTypes.string,
-  focusDialog: PropTypes.bool,
-  initialFocus: PropTypes.string,
-  onEnter: PropTypes.func,
-  titleId: PropTypes.string,
-  titleText: PropTypes.string,
-  underlayClass: PropTypes.string,
-  underlayColor: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  underlayStyle: PropTypes.object,
-  underlayClickExits: PropTypes.bool,
-  escapeExits: PropTypes.bool,
-  verticallyCenter: PropTypes.bool,
-  applicationNode: PropTypes.shape({
-    setAttribute: PropTypes.func.isRequired,
-  }),
-  getApplicationNode: PropTypes.func,
+  underlayColor: 'rgba(0,0,0,0.5)'
 };
 
 const DisplacedModal = displace(Modal);

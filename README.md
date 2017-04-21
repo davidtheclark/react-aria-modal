@@ -38,11 +38,11 @@ This module provides a "smart" minimally styled component to wrap you "dumb" ful
 npm install react-aria-modal
 ```
 
-You'll need to be compiling CommonJS modules.
+`dist/react-aria-modal.js` is the Babel-compiled file that you'll use.
 
 ### React Dependency
 
-Version 2+ is compatible with React 0.14.
+Version 2+ is compatible with React >0.14.
 
 Version 1+ is compatible with React 0.13.
 
@@ -53,56 +53,79 @@ Just provide the right props (see below) and pass the content of the modal as th
 Look in `demo/js/` for example code. (And see what they look like [here]((http://davidtheclark.github.io/react-aria-modal/demo/).) But here's a simple example.
 
 ```jsx
-var AriaModal = require('react-aria-modal');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const AriaModal = require('../../');
 
-var DemoOne = React.createClass({
-  getInitialState: function() {
-    return { modalActive: false };
-  },
+class DemoOne extends React.Component {
+  constructor(props) {
+    super(props);
 
-  activateModal: function() {
+    this.state = {
+      modalActive: false
+    };
+
+    this.activateModal = this.activateModal.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
+    this.getApplicationNode = this.getApplicationNode.bind(this);
+  }
+
+  activateModal = () => {
     this.setState({ modalActive: true });
-  },
+  };
 
-  deactivateModal: function() {
+  deactivateModal = () => {
     this.setState({ modalActive: false });
-  },
+  };
 
-  getApplicationNode: function() {
-    return document.getElementById('my-application');
-  },
+  getApplicationNode = () => {
+    return document.getElementById('application');
+  };
 
-  render: function() {
+  render() {
+    const modal = this.state.modalActive
+      ? <AriaModal
+          titleText="demo one"
+          onExit={this.deactivateModal}
+          initialFocus="#demo-one-deactivate"
+          getApplicationNode={this.getApplicationNode}
+          underlayStyle={{ paddingTop: '2em' }}
+        >
+          <div id="demo-one-modal" className="modal">
+            <div className="modal-body">
+              <p>
+                Here is a modal
+                {' '}
+                <a href="#">with</a>
+                {' '}
+                <a href="#">some</a>
+                {' '}
+                <a href="#">focusable</a>
+                {' '}
+                parts.
+              </p>
+            </div>
+            <footer className="modal-footer">
+              <button id="demo-one-deactivate" onClick={this.deactivateModal}>
+                deactivate modal
+              </button>
+            </footer>
+          </div>
+        </AriaModal>
+      : false;
+
     return (
       <div>
         <button onClick={this.activateModal}>
           activate modal
         </button>
-        <AriaModal
-          mounted={this.state.modalActive}
-          titleText='demo one'
-          onExit={this.deactivateModal}
-          initialFocus='#demo-one-deactivate'
-          getApplicationNode={this.getApplicationNode}
-        >
-          <div className='modal-dialog'>
-            <p>
-              Here is a modal.
-            </p>
-            <p>
-              <button
-                id='demo-one-deactivate'
-                onClick={this.deactivateModal}
-              >
-                deactivate modal
-              </button>
-            </p>
-          </div>
-        </AriaModal>
+        {modal}
       </div>
-    )
-  },
-});
+    );
+  }
+}
+
+ReactDOM.render(<DemoOne />, document.getElementById('demo-one'));
 ```
 
 ## Details
@@ -346,3 +369,5 @@ Please note that this project is released with a Contributor Code of Conduct. By
 Lint with `npm run lint`.
 
 Test the demos with `npm start`.
+
+Build with `npm build`.
