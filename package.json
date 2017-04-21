@@ -33,7 +33,6 @@
   "dependencies": {
     "focus-trap-react": "^3.0.3",
     "no-scroll": "^2.0.0",
-    "prop-types": "^15.5.8",
     "react-displace": "^2.1.4"
   },
   "peerDependencies": {
@@ -41,6 +40,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.5.0",
