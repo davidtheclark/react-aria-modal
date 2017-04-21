@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const AriaModal = require('../../');
+const AriaModal = require('../../src/react-aria-modal');
 
 class DemoFour extends React.Component {
   constructor(props) {
