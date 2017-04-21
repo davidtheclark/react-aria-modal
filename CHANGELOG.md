@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.5.2
+
+- Fix `main` path in `package.json`.
+
 ## 2.5.1
 
 - Introduce `dist/react-aria-modal.js`, where `src/` now compiles to, since React 15.5+ demands `class`es, so Babel-compilation.
