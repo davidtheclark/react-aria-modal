@@ -5,7 +5,15 @@ const noScroll = require('no-scroll');
 
 const focusTrapFactory = React.createFactory(FocusTrap);
 
-class Modal extends React.Component {
+let Modal = class Modal extends React.Component {
+  static defaultProps = {
+    dialogId: 'react-aria-modal-dialog',
+    underlayClickExits: true,
+    escapeExits: true,
+    underlayColor: 'rgba(0,0,0,0.5)',
+    includeDefaultStyles: true
+  };
+
   constructor(props) {
     super(props);
 
@@ -61,24 +69,30 @@ class Modal extends React.Component {
   render() {
     const props = this.props;
 
-    const style = {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      zIndex: 1050,
-      overflowX: 'hidden',
-      overflowY: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      textAlign: 'center'
-    };
-    if (props.underlayColor) {
-      style.background = props.underlayColor;
+    let style = {}
+    if (props.includeDefaultStyles) {
+      style = {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 1050,
+        overflowX: 'hidden',
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        textAlign: 'center',
+      };
+
+      if (props.underlayColor) {
+        style.background = props.underlayColor;
+      }
+
+      if (props.underlayClickExits) {
+        style.cursor = 'pointer';
+      }
     }
-    if (props.underlayClickExits) {
-      style.cursor = 'pointer';
-    }
+
     if (props.underlayStyle) {
       for (const key in props.underlayStyle) {
         if (!props.underlayStyle.hasOwnProperty(key)) continue;
@@ -95,24 +109,42 @@ class Modal extends React.Component {
       underlayProps.onClick = this.checkClick;
     }
 
-    const verticalCenterHelperProps = {
-      key: 'a',
-      style: {
+    let verticalCenterStyle = {};
+    if (props.includeDefaultStyles) {
+      verticalCenterStyle = {
         display: 'inline-block',
         height: '100%',
-        verticalAlign: 'middle'
+        verticalAlign: 'middle',
       }
+    }
+
+    const verticalCenterHelperProps = {
+      key: 'a',
+      style: verticalCenterStyle,
     };
 
-    const dialogStyle = {
-      display: 'inline-block',
-      textAlign: 'left',
-      top: props.verticallyCenter ? '50%' : 0,
-      maxWidth: '100%',
-      cursor: 'default'
-    };
-    if (props.verticallyCenter) {
-      dialogStyle.verticalAlign = 'middle';
+    let dialogStyle = {};
+    if (props.includeDefaultStyles) {
+      dialogStyle = {
+        display: 'inline-block',
+        textAlign: 'left',
+        top: 0,
+        maxWidth: '100%',
+        cursor: 'default',
+        outline: (props.focusDialog) ? 0 : null,
+      };
+
+      if (props.verticallyCenter) {
+        dialogStyle.verticalAlign = 'middle';
+        dialogStyle.top = 0;
+      }
+    }
+
+    if (props.dialogStyle) {
+      for (const key in props.dialogStyle) {
+        if (!props.dialogStyle.hasOwnProperty(key)) continue;
+        dialogStyle[key] = props.dialogStyle[key];
+      }
     }
 
     const dialogProps = {
@@ -132,7 +164,6 @@ class Modal extends React.Component {
     }
     if (props.focusDialog) {
       dialogProps.tabIndex = '-1';
-      dialogProps.style.outline = 0;
     }
 
     const childrenArray = [React.DOM.div(dialogProps, props.children)];
@@ -155,17 +186,10 @@ class Modal extends React.Component {
   }
 }
 
-Modal.defaultProps = {
-  dialogId: 'react-aria-modal-dialog',
-  underlayClickExits: true,
-  escapeExits: true,
-  underlayColor: 'rgba(0,0,0,0.5)'
-};
+Modal = displace(Modal);
 
-const DisplacedModal = displace(Modal);
-
-DisplacedModal.renderTo = function(input) {
+Modal.renderTo = function(input) {
   return displace(Modal, { renderTo: input });
 };
 
-module.exports = DisplacedModal;
+module.exports = Modal;
