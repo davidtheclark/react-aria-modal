@@ -176,7 +176,7 @@ Same as `applicationNode`, but a function that returns the node instead of the n
 
 Type: `Boolean`
 
-If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`.
+If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only used when an alert, error, or warning occurs ([more info](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role)).
 
 ### includeDefaultStyles
 
