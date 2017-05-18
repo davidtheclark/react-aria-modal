@@ -50,7 +50,7 @@ Version 1+ is compatible with React 0.13.
 
 Just provide the right props (see below) and pass the content of the modal as this component's child.
 
-Look in `[demo/js/](demo/js/)` for examples and [view the demo](http://davidtheclark.github.io/react-aria-modal/demo/), but here's a simple example:
+Look in [`demo/js/`](demo/js/) for examples and [view the demo](http://davidtheclark.github.io/react-aria-modal/demo/), but here's a simple example:
 
 ```jsx
 const React = require('react');
