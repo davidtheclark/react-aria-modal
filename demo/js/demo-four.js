@@ -45,6 +45,7 @@ class DemoFour extends React.Component {
                 <a href="#">some</a>
                 {' '}
                 <a href="#">focusable</a>
+                {' '}
                 parts.
               </p>
             </div>
