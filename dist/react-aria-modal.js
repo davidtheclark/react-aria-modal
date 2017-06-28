@@ -178,9 +178,9 @@ var Modal = (_temp = _class = function (_React$Component) {
         dialogProps.tabIndex = '-1';
       }
 
-      var childrenArray = [React.DOM.div(dialogProps, props.children)];
+      var childrenArray = [React.createElement('div', dialogProps, props.children)];
       if (props.verticallyCenter) {
-        childrenArray.unshift(React.DOM.div(verticalCenterHelperProps));
+        childrenArray.unshift(React.createElement('div', verticalCenterHelperProps));
       }
 
       return focusTrapFactory({
@@ -189,7 +189,7 @@ var Modal = (_temp = _class = function (_React$Component) {
           escapeDeactivates: props.escapeExits,
           onDeactivate: this.deactivate
         }
-      }, React.DOM.div(underlayProps, childrenArray));
+      }, React.createElement('div', underlayProps, childrenArray));
     }
   }]);
 
