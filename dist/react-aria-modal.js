@@ -14,6 +14,7 @@ var React = require('react');
 var FocusTrap = require('focus-trap-react');
 var displace = require('react-displace');
 var noScroll = require('no-scroll');
+var DOM = require('react-dom-factories');
 
 var focusTrapFactory = React.createFactory(FocusTrap);
 
@@ -178,9 +179,9 @@ var Modal = (_temp = _class = function (_React$Component) {
         dialogProps.tabIndex = '-1';
       }
 
-      var childrenArray = [React.DOM.div(dialogProps, props.children)];
+      var childrenArray = [DOM.div(dialogProps, props.children)];
       if (props.verticallyCenter) {
-        childrenArray.unshift(React.DOM.div(verticalCenterHelperProps));
+        childrenArray.unshift(DOM.div(verticalCenterHelperProps));
       }
 
       return focusTrapFactory({
@@ -189,7 +190,7 @@ var Modal = (_temp = _class = function (_React$Component) {
           escapeDeactivates: props.escapeExits,
           onDeactivate: this.deactivate
         }
-      }, React.DOM.div(underlayProps, childrenArray));
+      }, DOM.div(underlayProps, childrenArray));
     }
   }]);
 
