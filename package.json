@@ -50,6 +50,7 @@
     "eslint": "^3.13.1",
     "prettier": "^1.2.2",
     "react": "^15.6.1",
+    "react-dom-factories": "^1.0.0",
     "react-dom": "^15.6.1"
   },
   "babel": {
