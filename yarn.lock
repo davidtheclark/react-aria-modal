@@ -842,7 +842,7 @@ browserify-zlib@~0.1.2:
   dependencies:
     pako "~0.2.0"
 
-browserify@^14.0.0, browserify@^14.1.0, browserify@^14.4.0:
+browserify@^14.0.0, browserify@^14.1.0, browserify@^14.3.0:
   version "14.4.0"
   resolved "https://registry.yarnpkg.com/browserify/-/browserify-14.4.0.tgz#089a3463af58d0e48d8cd4070b3f74654d5abca9"
   dependencies:
