@@ -32,8 +32,8 @@
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
     "focus-trap-react": "^3.0.3",
-    "no-scroll": "^2.1.0",
-    "react-displace": "^2.2.1"
+    "no-scroll": "^2.0.0",
+    "react-displace": "^2.1.4"
   },
   "peerDependencies": {
     "react": "0.14.x || ^15.0.0"
