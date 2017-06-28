@@ -2,7 +2,7 @@ const React = require('react');
 const FocusTrap = require('focus-trap-react');
 const displace = require('react-displace');
 const noScroll = require('no-scroll');
- 
+
 const focusTrapFactory = React.createFactory(FocusTrap);
 
 let Modal = class Modal extends React.Component {
