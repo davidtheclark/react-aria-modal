@@ -150,6 +150,8 @@ When the modal is mounted, you'll notice the following:
 
 ## Props
 
+Any `data-*` or `aria-*` props that you provide will be passed directly to the modal's container `<div>`.
+
 ### onExit
 
 Type: `Function`, required

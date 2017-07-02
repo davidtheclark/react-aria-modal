@@ -166,7 +166,15 @@ let Modal = class Modal extends React.Component {
       dialogProps.tabIndex = '-1';
     }
 
+    // Apply data- and aria- attributes passed as props
+    for (let key in props) {
+      if (/^(data-|aria-)/.test(key)) {
+        dialogProps[key] = props[key];
+      }
+    }
+
     const childrenArray = [React.createElement('div', dialogProps, props.children)];
+
     if (props.verticallyCenter) {
       childrenArray.unshift(
         React.createElement('div', verticalCenterHelperProps)
