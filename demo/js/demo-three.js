@@ -30,6 +30,8 @@ class DemoThree extends React.Component {
           focusDialog={true}
           escapeExits={false}
           underlayStyle={{ paddingTop: '2em' }}
+          aria-describedby='describer'
+          data-test-id='test-id'
         >
           <div id="demo-three-modal" className="modal">
             <div className="modal-header">
