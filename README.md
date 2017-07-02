@@ -336,6 +336,13 @@ Type: `boolean`
 
 If `true`, the modal's contents will be vertically (as well as horizontally) centered.
 
+### focusTrapPaused
+
+Type: `boolean`
+
+If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be paused.
+You'll want to use this prop if you have another nested focus trap *inside* the modal.
+
 ## AriaModal.renderTo(HTMLElement | string)
 
 react-aria-modal uses [react-displace](https://github.com/davidtheclark/react-displace) to insert the modal into a new element at the end of `<body>`, making it easier to deal with positioning and z-indexes.

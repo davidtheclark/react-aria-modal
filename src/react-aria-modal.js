@@ -3,15 +3,14 @@ const FocusTrap = require('focus-trap-react');
 const displace = require('react-displace');
 const noScroll = require('no-scroll');
 
-const focusTrapFactory = React.createFactory(FocusTrap);
-
-let Modal = class Modal extends React.Component {
+class Modal extends React.Component {
   static defaultProps = {
     dialogId: 'react-aria-modal-dialog',
     underlayClickExits: true,
     escapeExits: true,
     underlayColor: 'rgba(0,0,0,0.5)',
-    includeDefaultStyles: true
+    includeDefaultStyles: true,
+    focusTrapPaused: false
   };
 
   constructor(props) {
@@ -181,7 +180,7 @@ let Modal = class Modal extends React.Component {
         );
     }
 
-    return focusTrapFactory(
+    return React.createElement(FocusTrap,
       {
         focusTrapOptions: {
           initialFocus: props.focusDialog
@@ -189,7 +188,8 @@ let Modal = class Modal extends React.Component {
             : props.initialFocus,
           escapeDeactivates: props.escapeExits,
           onDeactivate: this.deactivate
-        }
+        },
+        paused: props.focusTrapPaused
       },
       React.createElement('div', underlayProps, childrenArray)
     );
