@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.0
+
+- Add `focusTrapPaused` prop.
+- Fix `renderTo` displacement when rendering to a specified element.
+- Resolve React 15.6.1 warnings.
+
 ## 2.6.0
 
 - Add `includeDefaultStyles` prop.
