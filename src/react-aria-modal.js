@@ -196,10 +196,10 @@ let Modal = class Modal extends React.Component {
   }
 }
 
-Modal = displace(Modal);
+const DisplacedModal = displace(Modal);
 
-Modal.renderTo = function(input) {
+DisplacedModal.renderTo = function(input) {
   return displace(Modal, { renderTo: input });
 };
 
-module.exports = Modal;
+module.exports = DisplacedModal;
