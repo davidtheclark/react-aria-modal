@@ -50,7 +50,7 @@ Version 1+ is compatible with React 0.13.
 
 Just provide the right props (see below) and pass the content of the modal as this component's child.
 
-Look in `demo/js/` for example code. (And see what they look like [here]((http://davidtheclark.github.io/react-aria-modal/demo/).) But here's a simple example.
+Look in [`demo/js/`](demo/js/) for examples and [view the demo](http://davidtheclark.github.io/react-aria-modal/demo/), but here's a simple example:
 
 ```jsx
 const React = require('react');
@@ -150,6 +150,8 @@ When the modal is mounted, you'll notice the following:
 
 ## Props
 
+Any `data-*` or `aria-*` props that you provide will be passed directly to the modal's container `<div>`.
+
 ### onExit
 
 Type: `Function`, required
@@ -176,7 +178,7 @@ Same as `applicationNode`, but a function that returns the node instead of the n
 
 Type: `Boolean`
 
-If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`.
+If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only be used when an alert, error, or warning occurs ([more info](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role)).
 
 ### includeDefaultStyles
 
@@ -333,6 +335,13 @@ Presumably you will apply then yourself via an `underlayClass`.
 Type: `boolean`
 
 If `true`, the modal's contents will be vertically (as well as horizontally) centered.
+
+### focusTrapPaused
+
+Type: `boolean`
+
+If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be paused.
+You'll want to use this prop if you have another nested focus trap *inside* the modal.
 
 ## AriaModal.renderTo(HTMLElement | string)
 

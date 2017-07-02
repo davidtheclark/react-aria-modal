@@ -3,15 +3,14 @@ const FocusTrap = require('focus-trap-react');
 const displace = require('react-displace');
 const noScroll = require('no-scroll');
 
-const focusTrapFactory = React.createFactory(FocusTrap);
-
-let Modal = class Modal extends React.Component {
+class Modal extends React.Component {
   static defaultProps = {
     dialogId: 'react-aria-modal-dialog',
     underlayClickExits: true,
     escapeExits: true,
     underlayColor: 'rgba(0,0,0,0.5)',
-    includeDefaultStyles: true
+    includeDefaultStyles: true,
+    focusTrapPaused: false
   };
 
   constructor(props) {
@@ -166,12 +165,22 @@ let Modal = class Modal extends React.Component {
       dialogProps.tabIndex = '-1';
     }
 
-    const childrenArray = [React.DOM.div(dialogProps, props.children)];
-    if (props.verticallyCenter) {
-      childrenArray.unshift(React.DOM.div(verticalCenterHelperProps));
+    // Apply data- and aria- attributes passed as props
+    for (let key in props) {
+      if (/^(data-|aria-)/.test(key)) {
+        dialogProps[key] = props[key];
+      }
     }
 
-    return focusTrapFactory(
+    const childrenArray = [React.createElement('div', dialogProps, props.children)];
+
+    if (props.verticallyCenter) {
+      childrenArray.unshift(
+        React.createElement('div', verticalCenterHelperProps)
+        );
+    }
+
+    return React.createElement(FocusTrap,
       {
         focusTrapOptions: {
           initialFocus: props.focusDialog
@@ -179,17 +188,18 @@ let Modal = class Modal extends React.Component {
             : props.initialFocus,
           escapeDeactivates: props.escapeExits,
           onDeactivate: this.deactivate
-        }
+        },
+        paused: props.focusTrapPaused
       },
-      React.DOM.div(underlayProps, childrenArray)
+      React.createElement('div', underlayProps, childrenArray)
     );
   }
 }
 
-Modal = displace(Modal);
+const DisplacedModal = displace(Modal);
 
-Modal.renderTo = function(input) {
+DisplacedModal.renderTo = function(input) {
   return displace(Modal, { renderTo: input });
 };
 
-module.exports = Modal;
+module.exports = DisplacedModal;

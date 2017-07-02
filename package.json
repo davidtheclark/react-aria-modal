@@ -1,6 +1,6 @@
 {
   "name": "react-aria-modal",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "A fully accessible and flexible React modal built according WAI-ARIA Authoring Practices",
   "main": "dist/react-aria-modal.js",
   "scripts": {
@@ -49,8 +49,8 @@
     "budo": "^10.0.3",
     "eslint": "^3.13.1",
     "prettier": "^1.2.2",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "babel": {
     "presets": [

@@ -105,11 +105,14 @@
         is tall enough that scrolling is required to see all of its content
       </li>
       <li>
-        Uses <code>focusDialog=true</code>, so the focus trap
+        uses <code>focusDialog=true</code>, so the focus trap
         still works but no focus outline is initially visible
       </li>
       <li>
-        Uses <code>escapeExits=false</code> so the Escape key does not close the modal.
+        uses <code>escapeExits=false</code> so the Escape key does not close the modal.
+      </li>
+      <li>
+        passes special <code>data-</code> and <code>aria-</code> attributes to the modal container <code>div</code>.
       </li>
     </ul>
     <div id="demo-three"></div>
@@ -150,6 +153,12 @@
       sticky footer.
     </p>
     <div id="demo-seven"></div>
+
+    <h2>demo eight</h2>
+    <p>
+      This modal has a focus trap inside it, so must pause the modal's focus trap.
+    </p>
+    <div id="demo-eight"></div>
   </div>
 
   <p>
