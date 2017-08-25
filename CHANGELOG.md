@@ -1,5 +1,9 @@
 # Changelog
 
+## Head
+
+- [Fix] Prevent `props.onExit` from being called twice when modal includes exit buttons.
+
 ## 2.7.0
 
 - Add `focusTrapPaused` prop.

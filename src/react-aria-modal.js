@@ -13,13 +13,6 @@ class Modal extends React.Component {
     focusTrapPaused: false
   };
 
-  constructor(props) {
-    super(props);
-
-    this.checkClick = this.checkClick.bind(this);
-    this.deactivate = this.deactivate.bind(this);
-  }
-
   componentWillMount() {
     if (!this.props.titleText && !this.props.titleId) {
       throw new Error(
@@ -34,6 +27,7 @@ class Modal extends React.Component {
     if (props.onEnter) {
       props.onEnter();
     }
+
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
     setTimeout(function() {
@@ -41,6 +35,10 @@ class Modal extends React.Component {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
+
+    if (props.escapeExits) {
+      document.addEventListener('keydown', this.checkDocumentKeyDown);
+    }
   }
 
   componentWillUnmount() {
@@ -49,6 +47,7 @@ class Modal extends React.Component {
     if (applicationNode) {
       applicationNode.setAttribute('aria-hidden', 'false');
     }
+    document.removeEventListener('keydown', this.checkDocumentKeyDown);
   }
 
   getApplicationNode = () => {
@@ -56,12 +55,18 @@ class Modal extends React.Component {
     return this.props.applicationNode;
   };
 
-  checkClick = event => {
+  checkUnderlayClick = event => {
     if (this.dialogNode && this.dialogNode.contains(event.target)) return;
-    this.deactivate();
+    this.exit();
   };
 
-  deactivate = () => {
+  checkDocumentKeyDown = event => {
+    if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
+      this.exit();
+    }
+  }
+
+  exit = () => {
     this.props.onExit();
   };
 
@@ -105,7 +110,7 @@ class Modal extends React.Component {
     };
 
     if (props.underlayClickExits) {
-      underlayProps.onClick = this.checkClick;
+      underlayProps.onClick = this.checkUnderlayClick;
     }
 
     let verticalCenterStyle = {};
@@ -185,9 +190,7 @@ class Modal extends React.Component {
         focusTrapOptions: {
           initialFocus: props.focusDialog
             ? '#react-aria-modal-dialog'
-            : props.initialFocus,
-          escapeDeactivates: props.escapeExits,
-          onDeactivate: this.deactivate
+            : props.initialFocus
         },
         paused: props.focusTrapPaused
       },
