@@ -189,7 +189,7 @@ class Modal extends React.Component {
       {
         focusTrapOptions: {
           initialFocus: props.focusDialog
-            ? '#react-aria-modal-dialog'
+            ? `#${this.props.dialogId}`
             : props.initialFocus
         },
         paused: props.focusTrapPaused
