@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.2
+
+- [Fix] `focusDialog` will work even if you provide a non-default `dialogId`.
+
 ## 2.7.1
 
 - [Fix] Prevent `props.onExit` from being called twice when modal includes exit buttons.
