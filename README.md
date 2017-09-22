@@ -154,9 +154,9 @@ Any `data-*` or `aria-*` props that you provide will be passed directly to the m
 
 ### onExit
 
-Type: `Function`, required
+Type: `Function`
 
-This function needs to handles the state change of *exiting* (or deactivating) the modal.
+This function handles the state change of *exiting* (or deactivating) the modal.
 
 Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to *you* instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
 
