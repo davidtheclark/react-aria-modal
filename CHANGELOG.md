@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.8.0
+
+- [Changed] `onExit` is now optional. If ommitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
+
 ## 2.7.2
 
 - [Fix] `focusDialog` will work even if you provide a non-default `dialogId`.
