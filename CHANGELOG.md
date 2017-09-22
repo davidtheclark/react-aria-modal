@@ -2,7 +2,7 @@
 
 ## 2.8.0
 
-- [Changed] `onExit` is now optional. If ommitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
+- [Non-breaking change] `onExit` is now optional. If ommitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
 
 ## 2.7.2
 

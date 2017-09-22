@@ -67,9 +67,8 @@ class Modal extends React.Component {
   }
 
   exit = () => {
-    const props = this.props;
-    if (props.onExit) {
-      props.onExit();
+    if (this.props.onExit) {
+      this.props.onExit();
     }
   };
 
