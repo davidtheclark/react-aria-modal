@@ -156,9 +156,12 @@ Any `data-*` or `aria-*` props that you provide will be passed directly to the m
 
 Type: `Function`
 
-This function handles the state change of *exiting* (or deactivating) the modal.
+This function handles the state change of *exiting* (or deactivating) the modal. 
+It will be invoked when the user clicks outside the modal (if `underlayClickExits={true}`, as is the default) or hits Escape (if `escapeExits={true}`, as is the default).
 
 Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to *you* instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
+
+If you may omit this prop if you don't want clicks outside the modal or Escape to close it, so don't want to provide a function.
 
 ### applicationNode
 
