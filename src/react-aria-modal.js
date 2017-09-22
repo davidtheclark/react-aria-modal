@@ -5,6 +5,7 @@ const noScroll = require('no-scroll');
 
 class Modal extends React.Component {
   static defaultProps = {
+    underlayProps: {},
     dialogId: 'react-aria-modal-dialog',
     underlayClickExits: true,
     escapeExits: true,
@@ -113,6 +114,10 @@ class Modal extends React.Component {
 
     if (props.underlayClickExits) {
       underlayProps.onClick = this.checkUnderlayClick;
+    }
+
+    for (const prop in this.props.underlayProps) {
+      underlayProps[prop] = this.props.underlayProps[prop];
     }
 
     let verticalCenterStyle = {};

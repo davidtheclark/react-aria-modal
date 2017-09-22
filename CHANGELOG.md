@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.9.0
+
+- Adds a `underlayProps` prop to pass additional attributes to the underlay container.
+
 ## 2.8.0
 
 - [Non-breaking change] `onExit` is now optional. If ommitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
