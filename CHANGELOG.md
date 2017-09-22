@@ -2,7 +2,7 @@
 
 ## 2.9.0
 
-- Adds a `underlayProps` prop to pass additional attributes to the underlay container.
+- Add `underlayProps` prop to pass additional attributes to the underlay container.
 
 ## 2.8.0
 
