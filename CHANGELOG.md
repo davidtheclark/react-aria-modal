@@ -1,12 +1,16 @@
 # Changelog
 
+## 2.10.0
+
+- Add support for React 16.
+
 ## 2.9.0
 
 - Add `underlayProps` prop to pass additional attributes to the underlay container.
 
 ## 2.8.0
 
-- [Non-breaking change] `onExit` is now optional. If ommitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
+- [Non-breaking change] `onExit` is now optional. If omitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
 
 ## 2.7.2
 
