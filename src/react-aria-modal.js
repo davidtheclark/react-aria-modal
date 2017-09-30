@@ -5,6 +5,7 @@ const noScroll = require('no-scroll');
 
 class Modal extends React.Component {
   static defaultProps = {
+    underlayProps: {},
     dialogId: 'react-aria-modal-dialog',
     underlayClickExits: true,
     escapeExits: true,
@@ -12,13 +13,6 @@ class Modal extends React.Component {
     includeDefaultStyles: true,
     focusTrapPaused: false
   };
-
-  constructor(props) {
-    super(props);
-
-    this.checkClick = this.checkClick.bind(this);
-    this.deactivate = this.deactivate.bind(this);
-  }
 
   componentWillMount() {
     if (!this.props.titleText && !this.props.titleId) {
@@ -34,6 +28,7 @@ class Modal extends React.Component {
     if (props.onEnter) {
       props.onEnter();
     }
+
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
     setTimeout(function() {
@@ -41,6 +36,10 @@ class Modal extends React.Component {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
+
+    if (props.escapeExits) {
+      document.addEventListener('keydown', this.checkDocumentKeyDown);
+    }
   }
 
   componentWillUnmount() {
@@ -49,6 +48,7 @@ class Modal extends React.Component {
     if (applicationNode) {
       applicationNode.setAttribute('aria-hidden', 'false');
     }
+    document.removeEventListener('keydown', this.checkDocumentKeyDown);
   }
 
   getApplicationNode = () => {
@@ -56,13 +56,21 @@ class Modal extends React.Component {
     return this.props.applicationNode;
   };
 
-  checkClick = event => {
+  checkUnderlayClick = event => {
     if (this.dialogNode && this.dialogNode.contains(event.target)) return;
-    this.deactivate();
+    this.exit();
   };
 
-  deactivate = () => {
-    this.props.onExit();
+  checkDocumentKeyDown = event => {
+    if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
+      this.exit();
+    }
+  }
+
+  exit = () => {
+    if (this.props.onExit) {
+      this.props.onExit();
+    }
   };
 
   render() {
@@ -105,7 +113,11 @@ class Modal extends React.Component {
     };
 
     if (props.underlayClickExits) {
-      underlayProps.onClick = this.checkClick;
+      underlayProps.onClick = this.checkUnderlayClick;
+    }
+
+    for (const prop in this.props.underlayProps) {
+      underlayProps[prop] = this.props.underlayProps[prop];
     }
 
     let verticalCenterStyle = {};
@@ -184,10 +196,8 @@ class Modal extends React.Component {
       {
         focusTrapOptions: {
           initialFocus: props.focusDialog
-            ? '#react-aria-modal-dialog'
-            : props.initialFocus,
-          escapeDeactivates: props.escapeExits,
-          onDeactivate: this.deactivate
+            ? `#${this.props.dialogId}`
+            : props.initialFocus
         },
         paused: props.focusTrapPaused
       },

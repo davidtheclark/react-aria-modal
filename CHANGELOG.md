@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.10.0
+
+- Add support for React 16.
+
+## 2.9.0
+
+- Add `underlayProps` prop to pass additional attributes to the underlay container.
+
+## 2.8.0
+
+- [Non-breaking change] `onExit` is now optional. If omitted, clicking outside the modal or hitting escape will not attempt to call `onExit`.
+
+## 2.7.2
+
+- [Fix] `focusDialog` will work even if you provide a non-default `dialogId`.
+
+## 2.7.1
+
+- [Fix] Prevent `props.onExit` from being called twice when modal includes exit buttons.
+
 ## 2.7.0
 
 - Add `focusTrapPaused` prop.

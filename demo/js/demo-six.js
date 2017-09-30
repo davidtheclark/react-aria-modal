@@ -38,6 +38,9 @@ class DemoSix extends React.Component {
           onExit={this.deactivateModal}
           initialFocus="#demo-six-deactivate"
           getApplicationNode={this.getApplicationNode}
+          underlayProps={{
+            'data-foo': 'foo'
+          }}
           underlayStyle={{
             zIndex: 100,
             background: 'rgba(255, 192, 203, 0.5)',
