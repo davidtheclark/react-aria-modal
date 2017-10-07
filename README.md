@@ -7,7 +7,7 @@ This module provides a "smart" minimally styled component to wrap you "dumb" ful
   - Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
   without returning to the main document beneath.
   - Escape will close the modal.
-  - Scrolling is frozen on the main document beneath the modal. (Although, sadly, you can still mess with the scrolling using a touch screen.)
+  - Scrolling is frozen on the main document beneath the modal.
   - When the modal closes, focus returns to the element that was focused just before the modal activated.
   - The dialog element has an ARIA `role` of `dialog` (or `alertdialog`).
   - The dialog element has an ARIA attribute designating its title, either `aria-label` or `aria-labelledby`.
@@ -345,6 +345,12 @@ Type: `boolean`
 
 If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be paused.
 You'll want to use this prop if you have another nested focus trap *inside* the modal.
+
+### scrollDisabled
+
+Type: `boolean`, Default: `true`
+
+If `true`, the modal dialog will prevent any scrolling behind the modal window. 
 
 ## AriaModal.renderTo(HTMLElement | string)
 
