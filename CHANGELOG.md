@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.11.0
+
+- Add `scrollDisabled` prop (default `true`), for edge cases when the document's scroll should not be disabled.
+
 ## 2.10.0
 
 - Add support for React 16.
