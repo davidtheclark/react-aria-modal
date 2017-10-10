@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.11.1
+
+- Update `focus-trap-react` and `react-displace` to allow React 16 installation.
+
 ## 2.11.0
 
 - Add `scrollDisabled` prop (default `true`), for edge cases when the document's scroll should not be disabled.
