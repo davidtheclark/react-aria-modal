@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.11.2
+
+- Add `focusTrapOptions` prop to pass options to the focus trap.
+
 ## 2.11.1
 
 - Update `focus-trap-react` and `react-displace` to allow React 16 installation.
