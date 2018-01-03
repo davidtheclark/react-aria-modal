@@ -351,7 +351,7 @@ You'll want to use this prop if you have another nested focus trap *inside* the 
 Type: `object`
 
 Customize properties of the `focusTrapOptions` prop that is passed to the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap).
-Use this prop if you need better control of where focus is returned.
+For example, you can use this prop if you need better control of where focus is returned.
 
 ### scrollDisabled
 
