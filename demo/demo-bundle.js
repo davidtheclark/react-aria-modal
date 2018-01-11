@@ -185,7 +185,7 @@ var DemoEight = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoEight, null), document.getElementById('demo-eight'));
 
-},{"../../src/react-aria-modal":46,"focus-trap-react":28,"react":44,"react-dom":41}],2:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"focus-trap-react":30,"react":46,"react-dom":43}],2:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -319,7 +319,7 @@ var DemoFive = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoFive, null), document.getElementById('demo-five'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],3:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],3:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -431,7 +431,127 @@ var DemoFour = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoFour, null), document.getElementById('demo-four'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],4:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],4:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var AriaModal = require('../../src/react-aria-modal');
+
+var DemoNine = function (_React$Component) {
+  _inherits(DemoNine, _React$Component);
+
+  function DemoNine(props) {
+    _classCallCheck(this, DemoNine);
+
+    var _this = _possibleConstructorReturn(this, (DemoNine.__proto__ || Object.getPrototypeOf(DemoNine)).call(this, props));
+
+    _this.activateModal = function () {
+      _this.setState({ modalActive: true });
+    };
+
+    _this.deactivateModal = function () {
+      _this.setState({ modalActive: false });
+    };
+
+    _this.getApplicationNode = function () {
+      return document.getElementById('application');
+    };
+
+    _this.state = {
+      modalActive: false
+    };
+
+    _this.activateModal = _this.activateModal.bind(_this);
+    _this.deactivateModal = _this.deactivateModal.bind(_this);
+    _this.getApplicationNode = _this.getApplicationNode.bind(_this);
+    return _this;
+  }
+
+  _createClass(DemoNine, [{
+    key: 'render',
+    value: function render() {
+      var modal = this.state.modalActive ? React.createElement(
+        AriaModal,
+        {
+          titleText: 'demo nine',
+          onExit: this.deactivateModal,
+          initialFocus: '#demo-nine-deactivate',
+          getApplicationNode: this.getApplicationNode,
+          underlayStyle: { paddingTop: '2em' },
+          scrollDisabled: false
+        },
+        React.createElement(
+          'div',
+          { id: 'demo-nine-modal', className: 'modal' },
+          React.createElement(
+            'div',
+            { className: 'modal-body' },
+            React.createElement(
+              'p',
+              null,
+              'Here is a modal',
+              ' ',
+              React.createElement(
+                'a',
+                { href: '#' },
+                'with'
+              ),
+              ' ',
+              React.createElement(
+                'a',
+                { href: '#' },
+                'some'
+              ),
+              ' ',
+              React.createElement(
+                'a',
+                { href: '#' },
+                'focusable'
+              ),
+              ' ',
+              'parts.'
+            )
+          ),
+          React.createElement(
+            'footer',
+            { className: 'modal-footer' },
+            React.createElement(
+              'button',
+              { id: 'demo-nine-deactivate', onClick: this.deactivateModal },
+              'deactivate modal'
+            )
+          )
+        )
+      ) : false;
+
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'button',
+          { onClick: this.activateModal },
+          'activate modal'
+        ),
+        modal
+      );
+    }
+  }]);
+
+  return DemoNine;
+}(React.Component);
+
+ReactDOM.render(React.createElement(DemoNine, null), document.getElementById('demo-nine'));
+
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],5:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -550,7 +670,7 @@ var DemoOne = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoOne, null), document.getElementById('demo-one'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],5:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],6:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -673,7 +793,7 @@ var DemoSeven = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoSeven, null), document.getElementById('demo-seven'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],6:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],7:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -802,7 +922,132 @@ var DemoSix = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoSix, null), document.getElementById('demo-six'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],7:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],8:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+var FocusTrap = require('focus-trap-react');
+var AriaModal = require('../../src/react-aria-modal');
+
+var DemoTen = function (_React$Component) {
+  _inherits(DemoTen, _React$Component);
+
+  function DemoTen(props) {
+    _classCallCheck(this, DemoTen);
+
+    var _this = _possibleConstructorReturn(this, (DemoTen.__proto__ || Object.getPrototypeOf(DemoTen)).call(this, props));
+
+    _this.deactivateModal = function () {
+      _this.setState({ modalActive: false });
+    };
+
+    _this.state = {
+      modalActive: false
+    };
+
+    _this.activateModal = _this.activateModal.bind(_this);
+    _this.deactivateModal = _this.deactivateModal.bind(_this);
+    _this.getApplicationNode = _this.getApplicationNode.bind(_this);
+    return _this;
+  }
+
+  _createClass(DemoTen, [{
+    key: 'activateModal',
+    value: function activateModal() {
+      this.setState({ modalActive: true });
+    }
+  }, {
+    key: 'getApplicationNode',
+    value: function getApplicationNode() {
+      return document.getElementById('application');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var modal = this.state.modalActive ? React.createElement(
+        AriaModal,
+        {
+          titleText: 'demo ten',
+          onExit: this.deactivateModal,
+          getApplicationNode: this.getApplicationNode,
+          underlayStyle: { paddingTop: '2em' },
+          focusTrapOptions: {
+            initialFocus: "#demo-ten-deactivate",
+            returnFocusOnDeactivate: false
+          }
+        },
+        React.createElement(
+          'div',
+          { id: 'demo-ten-modal', className: 'modal' },
+          React.createElement(
+            'div',
+            { className: 'modal-body' },
+            React.createElement(
+              'p',
+              null,
+              'Here is a modal',
+              ' ',
+              React.createElement(
+                'a',
+                { href: '#' },
+                'with'
+              ),
+              ' ',
+              React.createElement(
+                'a',
+                { href: '#' },
+                'some'
+              ),
+              ' ',
+              React.createElement(
+                'a',
+                { href: '#' },
+                'focusable'
+              ),
+              ' ',
+              'parts.'
+            )
+          ),
+          React.createElement(
+            'footer',
+            { className: 'modal-footer' },
+            React.createElement(
+              'button',
+              { id: 'demo-ten-deactivate', onClick: this.deactivateModal },
+              'deactivate modal'
+            )
+          )
+        )
+      ) : false;
+
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'button',
+          { onClick: this.activateModal },
+          'activate modal'
+        ),
+        modal
+      );
+    }
+  }]);
+
+  return DemoTen;
+}(React.Component);
+
+ReactDOM.render(React.createElement(DemoTen, null), document.getElementById('demo-ten'));
+
+},{"../../src/react-aria-modal":48,"focus-trap-react":30,"react":46,"react-dom":43}],9:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -942,7 +1187,7 @@ var DemoThree = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoThree, null), document.getElementById('demo-three'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],8:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],10:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1078,7 +1323,7 @@ var DemoTwo = function (_React$Component) {
 
 ReactDOM.render(React.createElement(DemoTwo, null), document.getElementById('demo-two'));
 
-},{"../../src/react-aria-modal":46,"react":44,"react-dom":41}],9:[function(require,module,exports){
+},{"../../src/react-aria-modal":48,"react":46,"react-dom":43}],11:[function(require,module,exports){
 'use strict';
 
 require('./demo-one');
@@ -1089,8 +1334,10 @@ require('./demo-five');
 require('./demo-six');
 require('./demo-seven');
 require('./demo-eight');
+require('./demo-nine');
+require('./demo-ten');
 
-},{"./demo-eight":1,"./demo-five":2,"./demo-four":3,"./demo-one":4,"./demo-seven":5,"./demo-six":6,"./demo-three":7,"./demo-two":8}],10:[function(require,module,exports){
+},{"./demo-eight":1,"./demo-five":2,"./demo-four":3,"./demo-nine":4,"./demo-one":5,"./demo-seven":6,"./demo-six":7,"./demo-ten":8,"./demo-three":9,"./demo-two":10}],12:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -1167,7 +1414,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":15,"_process":32}],11:[function(require,module,exports){
+},{"./emptyFunction":17,"_process":34}],13:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1201,7 +1448,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 /**
@@ -1231,7 +1478,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1269,7 +1516,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":12}],14:[function(require,module,exports){
+},{"./camelize":14}],16:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1307,7 +1554,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":23}],15:[function(require,module,exports){
+},{"./isTextNode":25}],17:[function(require,module,exports){
 "use strict";
 
 /**
@@ -1344,7 +1591,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1364,7 +1611,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":32}],17:[function(require,module,exports){
+},{"_process":34}],19:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1389,7 +1636,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1426,7 +1673,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1457,7 +1704,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1494,7 +1741,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":19}],21:[function(require,module,exports){
+},{"./hyphenate":21}],23:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1550,7 +1797,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":32}],22:[function(require,module,exports){
+},{"_process":34}],24:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1573,7 +1820,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1596,7 +1843,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":22}],24:[function(require,module,exports){
+},{"./isNode":24}],26:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1617,7 +1864,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":11}],25:[function(require,module,exports){
+},{"./ExecutionEnvironment":13}],27:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1649,7 +1896,7 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-},{"./performance":24}],26:[function(require,module,exports){
+},{"./performance":26}],28:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1715,7 +1962,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -1780,7 +2027,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":15,"_process":32}],28:[function(require,module,exports){
+},{"./emptyFunction":17,"_process":34}],30:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1901,7 +2148,7 @@ FocusTrap.defaultProps = {
 };
 
 module.exports = FocusTrap;
-},{"focus-trap":29,"react":44}],29:[function(require,module,exports){
+},{"focus-trap":31,"react":46}],31:[function(require,module,exports){
 var tabbable = require('tabbable');
 
 var listeningFocusTrap = null;
@@ -2138,7 +2385,7 @@ function tryFocus(node) {
 
 module.exports = focusTrap;
 
-},{"tabbable":45}],30:[function(require,module,exports){
+},{"tabbable":47}],32:[function(require,module,exports){
 (function(root) {
   var isOn = false;
   var scrollbarSize;
@@ -2207,7 +2454,7 @@ module.exports = focusTrap;
   }
 })(this);
 
-},{}],31:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -2299,7 +2546,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -2485,7 +2732,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2548,7 +2795,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":37,"_process":32,"fbjs/lib/invariant":21,"fbjs/lib/warning":27}],34:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":39,"_process":34,"fbjs/lib/invariant":23,"fbjs/lib/warning":29}],36:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2608,7 +2855,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":37,"fbjs/lib/emptyFunction":15,"fbjs/lib/invariant":21}],35:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":39,"fbjs/lib/emptyFunction":17,"fbjs/lib/invariant":23}],37:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -3154,7 +3401,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 }).call(this,require('_process'))
-},{"./checkPropTypes":33,"./lib/ReactPropTypesSecret":37,"_process":32,"fbjs/lib/emptyFunction":15,"fbjs/lib/invariant":21,"fbjs/lib/warning":27,"object-assign":31}],36:[function(require,module,exports){
+},{"./checkPropTypes":35,"./lib/ReactPropTypesSecret":39,"_process":34,"fbjs/lib/emptyFunction":17,"fbjs/lib/invariant":23,"fbjs/lib/warning":29,"object-assign":33}],38:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -3186,7 +3433,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./factoryWithThrowingShims":34,"./factoryWithTypeCheckers":35,"_process":32}],37:[function(require,module,exports){
+},{"./factoryWithThrowingShims":36,"./factoryWithTypeCheckers":37,"_process":34}],39:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -3200,7 +3447,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3330,7 +3577,7 @@ function displace(WrappedComponent, options) {
 
 module.exports = displace;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":44,"react-dom":41}],39:[function(require,module,exports){
+},{"react":46,"react-dom":43}],41:[function(require,module,exports){
 (function (process){
 /** @license React v16.0.0
  * react-dom.development.js
@@ -20555,7 +20802,7 @@ module.exports = ReactDOMFiberEntry;
 }
 
 }).call(this,require('_process'))
-},{"_process":32,"fbjs/lib/EventListener":10,"fbjs/lib/ExecutionEnvironment":11,"fbjs/lib/camelizeStyleName":13,"fbjs/lib/containsNode":14,"fbjs/lib/emptyFunction":15,"fbjs/lib/emptyObject":16,"fbjs/lib/focusNode":17,"fbjs/lib/getActiveElement":18,"fbjs/lib/hyphenateStyleName":20,"fbjs/lib/invariant":21,"fbjs/lib/performanceNow":25,"fbjs/lib/shallowEqual":26,"fbjs/lib/warning":27,"object-assign":31,"prop-types":36,"prop-types/checkPropTypes":33,"react":44}],40:[function(require,module,exports){
+},{"_process":34,"fbjs/lib/EventListener":12,"fbjs/lib/ExecutionEnvironment":13,"fbjs/lib/camelizeStyleName":15,"fbjs/lib/containsNode":16,"fbjs/lib/emptyFunction":17,"fbjs/lib/emptyObject":18,"fbjs/lib/focusNode":19,"fbjs/lib/getActiveElement":20,"fbjs/lib/hyphenateStyleName":22,"fbjs/lib/invariant":23,"fbjs/lib/performanceNow":27,"fbjs/lib/shallowEqual":28,"fbjs/lib/warning":29,"object-assign":33,"prop-types":38,"prop-types/checkPropTypes":35,"react":46}],42:[function(require,module,exports){
 /*
  React v16.0.0
  react-dom.production.min.js
@@ -20813,7 +21060,7 @@ function ck(a,b,c,d,e){ak(c)?void 0:w("200");var f=c._reactRootContainer;if(f)Xj
 var ek={createPortal:dk,hydrate:function(a,b,c){return ck(null,a,b,!0,c)},render:function(a,b,c){return ck(null,a,b,!1,c)},unstable_renderSubtreeIntoContainer:function(a,b,c,d){null!=a&&Pa.has(a)?void 0:w("38");return ck(a,b,c,!1,d)},unmountComponentAtNode:function(a){ak(a)?void 0:w("40");return a._reactRootContainer?(Xj.unbatchedUpdates(function(){ck(null,null,a,!1,function(){a._reactRootContainer=null})}),!0):!1},findDOMNode:Dh,unstable_createPortal:dk,unstable_batchedUpdates:sb.batchedUpdates,
 unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{EventPluginHub:Jb,EventPluginRegistry:sa,EventPropagators:Th,ReactControlledComponent:nb,ReactDOMComponentTree:G,ReactDOMEventListener:L}};Cj({findFiberByHostInstance:G.getClosestInstanceFromNode,findHostInstanceByFiber:Xj.findHostInstance,bundleType:0,version:"16.0.0",rendererPackageName:"react-dom"});module.exports=ek;
 
-},{"fbjs/lib/EventListener":10,"fbjs/lib/ExecutionEnvironment":11,"fbjs/lib/containsNode":14,"fbjs/lib/emptyFunction":15,"fbjs/lib/emptyObject":16,"fbjs/lib/focusNode":17,"fbjs/lib/getActiveElement":18,"fbjs/lib/invariant":21,"fbjs/lib/shallowEqual":26,"object-assign":31,"react":44}],41:[function(require,module,exports){
+},{"fbjs/lib/EventListener":12,"fbjs/lib/ExecutionEnvironment":13,"fbjs/lib/containsNode":16,"fbjs/lib/emptyFunction":17,"fbjs/lib/emptyObject":18,"fbjs/lib/focusNode":19,"fbjs/lib/getActiveElement":20,"fbjs/lib/invariant":23,"fbjs/lib/shallowEqual":28,"object-assign":33,"react":46}],43:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -20855,7 +21102,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":39,"./cjs/react-dom.production.min.js":40,"_process":32}],42:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":41,"./cjs/react-dom.production.min.js":42,"_process":34}],44:[function(require,module,exports){
 (function (process){
 /** @license React v16.0.0
  * react.development.js
@@ -22557,7 +22804,7 @@ module.exports = ReactEntry;
 }
 
 }).call(this,require('_process'))
-},{"_process":32,"fbjs/lib/emptyFunction":15,"fbjs/lib/emptyObject":16,"fbjs/lib/invariant":21,"fbjs/lib/warning":27,"object-assign":31,"prop-types/checkPropTypes":33}],43:[function(require,module,exports){
+},{"_process":34,"fbjs/lib/emptyFunction":17,"fbjs/lib/emptyObject":18,"fbjs/lib/invariant":23,"fbjs/lib/warning":29,"object-assign":33,"prop-types/checkPropTypes":35}],45:[function(require,module,exports){
 /*
  React v16.0.0
  react.production.min.js
@@ -22582,7 +22829,7 @@ Object.keys(a).join(", ")+"}":d,""));return g}function O(a,b){return"object"===t
 function R(a,b,d,e,c){var g="";null!=d&&(g=(""+d).replace(J,"$\x26/")+"/");b=L(b,g,e,c);null==a||N(a,"",Q,b);M(b)}var S={forEach:function(a,b,d){if(null==a)return a;b=L(null,null,b,d);null==a||N(a,"",P,b);M(b)},map:function(a,b,d){if(null==a)return a;var e=[];R(a,e,null,b,d);return e},count:function(a){return null==a?0:N(a,"",r.thatReturnsNull,null)},toArray:function(a){var b=[];R(a,b,null,r.thatReturnsArgument);return b}};
 module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.toArray,only:function(a){G.isValidElement(a)?void 0:t("143");return a}},Component:B.Component,PureComponent:B.PureComponent,unstable_AsyncComponent:B.AsyncComponent,createElement:G.createElement,cloneElement:G.cloneElement,isValidElement:G.isValidElement,createFactory:G.createFactory,version:"16.0.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:C,assign:f}};
 
-},{"fbjs/lib/emptyFunction":15,"fbjs/lib/emptyObject":16,"fbjs/lib/invariant":21,"object-assign":31}],44:[function(require,module,exports){
+},{"fbjs/lib/emptyFunction":17,"fbjs/lib/emptyObject":18,"fbjs/lib/invariant":23,"object-assign":33}],46:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -22593,7 +22840,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":42,"./cjs/react.production.min.js":43,"_process":32}],45:[function(require,module,exports){
+},{"./cjs/react.development.js":44,"./cjs/react.production.min.js":45,"_process":34}],47:[function(require,module,exports){
 module.exports = function(el, options) {
   options = options || {};
 
@@ -22711,7 +22958,7 @@ function createIsUnavailable(elementDocument) {
   }
 }
 
-},{}],46:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22764,7 +23011,10 @@ var Modal = function (_React$Component) {
       if (!this.props.titleText && !this.props.titleId) {
         throw new Error('react-aria-modal instances should have a `titleText` or `titleId`');
       }
-      noScroll.on();
+
+      if (this.props.scrollDisabled) {
+        noScroll.on();
+      }
     }
   }, {
     key: 'componentDidMount',
@@ -22789,7 +23039,9 @@ var Modal = function (_React$Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      noScroll.off();
+      if (this.props.scrollDisabled) {
+        noScroll.off();
+      }
       var applicationNode = this.getApplicationNode();
       if (applicationNode) {
         applicationNode.setAttribute('aria-hidden', 'false');
@@ -22915,10 +23167,13 @@ var Modal = function (_React$Component) {
         childrenArray.unshift(React.createElement('div', verticalCenterHelperProps));
       }
 
+      var focusTrapOptions = props.focusTrapOptions || {};
+      if (props.focusDialog || props.initialFocus) {
+        focusTrapOptions.initialFocus = props.focusDialog ? '#' + this.props.dialogId : props.initialFocus;
+      }
+
       return React.createElement(FocusTrap, {
-        focusTrapOptions: {
-          initialFocus: props.focusDialog ? '#' + this.props.dialogId : props.initialFocus
-        },
+        focusTrapOptions: focusTrapOptions,
         paused: props.focusTrapPaused
       }, React.createElement('div', underlayProps, childrenArray));
     }
@@ -22934,7 +23189,8 @@ Modal.defaultProps = {
   escapeExits: true,
   underlayColor: 'rgba(0,0,0,0.5)',
   includeDefaultStyles: true,
-  focusTrapPaused: false
+  focusTrapPaused: false,
+  scrollDisabled: true
 };
 
 
@@ -22946,4 +23202,4 @@ DisplacedModal.renderTo = function (input) {
 
 module.exports = DisplacedModal;
 
-},{"focus-trap-react":28,"no-scroll":30,"react":44,"react-displace":38}]},{},[9]);
+},{"focus-trap-react":30,"no-scroll":32,"react":46,"react-displace":40}]},{},[11]);
