@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## 2.12.0
 
 - Add `focusTrapOptions` prop to pass options to the focus trap.
 
