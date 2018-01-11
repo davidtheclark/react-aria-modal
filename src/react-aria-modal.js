@@ -11,7 +11,8 @@ class Modal extends React.Component {
     escapeExits: true,
     underlayColor: 'rgba(0,0,0,0.5)',
     includeDefaultStyles: true,
-    focusTrapPaused: false
+    focusTrapPaused: false,
+    scrollDisabled: true
   };
 
   componentWillMount() {
@@ -20,7 +21,10 @@ class Modal extends React.Component {
         'react-aria-modal instances should have a `titleText` or `titleId`'
       );
     }
-    noScroll.on();
+
+    if (this.props.scrollDisabled) {
+      noScroll.on();
+    }
   }
 
   componentDidMount() {
@@ -43,7 +47,9 @@ class Modal extends React.Component {
   }
 
   componentWillUnmount() {
-    noScroll.off();
+    if (this.props.scrollDisabled) {
+      noScroll.off();
+    }
     const applicationNode = this.getApplicationNode();
     if (applicationNode) {
       applicationNode.setAttribute('aria-hidden', 'false');
@@ -192,13 +198,16 @@ class Modal extends React.Component {
         );
     }
 
-    return React.createElement(FocusTrap,
-      {
-        focusTrapOptions: {
-          initialFocus: props.focusDialog
+    const focusTrapOptions = props.focusTrapOptions || {};
+    if (props.focusDialog || props.initialFocus) {
+        focusTrapOptions.initialFocus = props.focusDialog
             ? `#${this.props.dialogId}`
             : props.initialFocus
-        },
+    }
+
+    return React.createElement(FocusTrap,
+      {
+        focusTrapOptions,
         paused: props.focusTrapPaused
       },
       React.createElement('div', underlayProps, childrenArray)
