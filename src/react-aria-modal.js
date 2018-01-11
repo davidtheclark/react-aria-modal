@@ -198,13 +198,16 @@ class Modal extends React.Component {
         );
     }
 
-    return React.createElement(FocusTrap,
-      {
-        focusTrapOptions: {
-          initialFocus: props.focusDialog
+    const focusTrapOptions = props.focusTrapOptions || {};
+    if (props.focusDialog || props.initialFocus) {
+        focusTrapOptions.initialFocus = props.focusDialog
             ? `#${this.props.dialogId}`
             : props.initialFocus
-        },
+    }
+
+    return React.createElement(FocusTrap,
+      {
+        focusTrapOptions,
         paused: props.focusTrapPaused
       },
       React.createElement('div', underlayProps, childrenArray)
