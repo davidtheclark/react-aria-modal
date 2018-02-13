@@ -2,7 +2,7 @@
 
 A fully accessible and flexible React modal built according [WAI-ARIA Authoring Practices](http://www.w3.org/TR/wai-aria-practices/#dialog_modal).
 
-This module provides a "smart" minimally styled component to wrap you "dumb" fully styled component. It provides the following features, while giving you complete control of the content:
+This module provides a minimally styled "Container" component to wrap your fully-styled "Presentational" component. It provides the following features, while giving you complete control of the content:
 
   - Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
   without returning to the main document beneath.
