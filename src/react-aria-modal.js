@@ -40,7 +40,7 @@ class Modal extends React.Component {
     if (props.escapeExits) {
       document.addEventListener('keydown', this.checkDocumentKeyDown);
     }
-    
+
     if (this.props.scrollDisabled) {
       noScroll.on();
     }
@@ -212,6 +212,7 @@ class Modal extends React.Component {
             ? `#${this.props.dialogId}`
             : props.initialFocus
     }
+    focusTrapOptions.escapeDeactivates = props.escapeExits;
 
     return React.createElement(FocusTrap,
       {
