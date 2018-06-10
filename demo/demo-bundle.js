@@ -23011,10 +23011,6 @@ var Modal = function (_React$Component) {
       if (!this.props.titleText && !this.props.titleId) {
         throw new Error('react-aria-modal instances should have a `titleText` or `titleId`');
       }
-
-      if (this.props.scrollDisabled) {
-        noScroll.on();
-      }
     }
   }, {
     key: 'componentDidMount',
@@ -23034,6 +23030,19 @@ var Modal = function (_React$Component) {
 
       if (props.escapeExits) {
         document.addEventListener('keydown', this.checkDocumentKeyDown);
+      }
+
+      if (this.props.scrollDisabled) {
+        noScroll.on();
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.scrollDisabled && !this.props.scrollDisabled) {
+        noScroll.off();
+      } else if (!prevProps.scrollDisabled && this.props.scrollDisabled) {
+        noScroll.on();
       }
     }
   }, {
@@ -23171,6 +23180,7 @@ var Modal = function (_React$Component) {
       if (props.focusDialog || props.initialFocus) {
         focusTrapOptions.initialFocus = props.focusDialog ? '#' + this.props.dialogId : props.initialFocus;
       }
+      focusTrapOptions.escapeDeactivates = props.escapeExits;
 
       return React.createElement(FocusTrap, {
         focusTrapOptions: focusTrapOptions,
