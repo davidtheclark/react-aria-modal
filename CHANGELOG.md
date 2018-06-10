@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.12.2
+
+- Fix bug causing Escape to break the focus trap, without closing the modal, when you use `escapeExits={false}`.
+
+## 2.12.1
+
+- Fix bug that was blocking changes to the `scrollDisabled` prop *while the modal is open*.
+
 ## 2.12.0
 
 - Add `focusTrapOptions` prop to pass options to the focus trap.

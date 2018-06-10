@@ -21,10 +21,6 @@ class Modal extends React.Component {
         'react-aria-modal instances should have a `titleText` or `titleId`'
       );
     }
-
-    if (this.props.scrollDisabled) {
-      noScroll.on();
-    }
   }
 
   componentDidMount() {
@@ -43,6 +39,18 @@ class Modal extends React.Component {
 
     if (props.escapeExits) {
       document.addEventListener('keydown', this.checkDocumentKeyDown);
+    }
+
+    if (this.props.scrollDisabled) {
+      noScroll.on();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.scrollDisabled && !this.props.scrollDisabled) {
+      noScroll.off();
+    } else if (!prevProps.scrollDisabled && this.props.scrollDisabled) {
+      noScroll.on();
     }
   }
 
@@ -204,6 +212,7 @@ class Modal extends React.Component {
             ? `#${this.props.dialogId}`
             : props.initialFocus
     }
+    focusTrapOptions.escapeDeactivates = props.escapeExits;
 
     return React.createElement(FocusTrap,
       {
