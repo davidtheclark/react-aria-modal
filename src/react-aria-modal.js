@@ -127,7 +127,7 @@ class Modal extends React.Component {
     };
 
     if (props.underlayClickExits) {
-      underlayProps.onClick = this.checkUnderlayClick;
+      underlayProps.onMouseDown = this.checkUnderlayClick;
     }
 
     for (const prop in this.props.underlayProps) {
