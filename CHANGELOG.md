@@ -1,8 +1,8 @@
 # Changelog
 
-## HEAD
+## 2.12.3
 
-- [Fix] Use `onMouseDown` instead of `onClick` to detect a tap on the underlay, which by default closes the modal. This fixes a bug where the modal would close if you click inside it then drag outside before releasing the mouse key.
+- Use `onMouseDown` instead of `onClick` to detect a tap on the underlay, which by default closes the modal. This fixes a bug where the modal would close if you click inside it then drag outside before releasing the mouse key.
 
 ## 2.12.2
 
