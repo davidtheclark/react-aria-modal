@@ -1097,7 +1097,7 @@ var DemoThree = function (_React$Component) {
           onExit: this.deactivateModal,
           focusDialog: true,
           escapeExits: false,
-          underlayStyle: { paddingTop: '2em' },
+          underlayStyle: { padding: '3em' },
           'aria-describedby': 'describer',
           'data-test-id': 'test-id'
         },
@@ -23099,7 +23099,7 @@ var Modal = function (_React$Component) {
       };
 
       if (props.underlayClickExits) {
-        underlayProps.onClick = this.checkUnderlayClick;
+        underlayProps.onMouseDown = this.checkUnderlayClick;
       }
 
       for (var prop in this.props.underlayProps) {
