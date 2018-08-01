@@ -29,7 +29,7 @@ class DemoThree extends React.Component {
           onExit={this.deactivateModal}
           focusDialog={true}
           escapeExits={false}
-          underlayStyle={{ paddingTop: '2em' }}
+          underlayStyle={{ padding: '3em' }}
           aria-describedby='describer'
           data-test-id='test-id'
         >
