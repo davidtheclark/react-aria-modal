@@ -79,7 +79,7 @@ class Modal extends React.Component {
     if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
       this.exit();
     }
-  }
+  };
 
   exit = () => {
     if (this.props.onExit) {
@@ -90,7 +90,7 @@ class Modal extends React.Component {
   render() {
     const props = this.props;
 
-    let style = {}
+    let style = {};
     if (props.includeDefaultStyles) {
       style = {
         position: 'fixed',
@@ -102,7 +102,7 @@ class Modal extends React.Component {
         overflowX: 'hidden',
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
-        textAlign: 'center',
+        textAlign: 'center'
       };
 
       if (props.underlayColor) {
@@ -139,13 +139,13 @@ class Modal extends React.Component {
       verticalCenterStyle = {
         display: 'inline-block',
         height: '100%',
-        verticalAlign: 'middle',
-      }
+        verticalAlign: 'middle'
+      };
     }
 
     const verticalCenterHelperProps = {
       key: 'a',
-      style: verticalCenterStyle,
+      style: verticalCenterStyle
     };
 
     let dialogStyle = {};
@@ -156,7 +156,7 @@ class Modal extends React.Component {
         top: 0,
         maxWidth: '100%',
         cursor: 'default',
-        outline: (props.focusDialog) ? 0 : null,
+        outline: props.focusDialog ? 0 : null
       };
 
       if (props.verticallyCenter) {
@@ -198,23 +198,26 @@ class Modal extends React.Component {
       }
     }
 
-    const childrenArray = [React.createElement('div', dialogProps, props.children)];
+    const childrenArray = [
+      React.createElement('div', dialogProps, props.children)
+    ];
 
     if (props.verticallyCenter) {
       childrenArray.unshift(
         React.createElement('div', verticalCenterHelperProps)
-        );
+      );
     }
 
     const focusTrapOptions = props.focusTrapOptions || {};
     if (props.focusDialog || props.initialFocus) {
-        focusTrapOptions.initialFocus = props.focusDialog
-            ? `#${this.props.dialogId}`
-            : props.initialFocus
+      focusTrapOptions.initialFocus = props.focusDialog
+        ? `#${this.props.dialogId}`
+        : props.initialFocus;
     }
     focusTrapOptions.escapeDeactivates = props.escapeExits;
 
-    return React.createElement(FocusTrap,
+    return React.createElement(
+      FocusTrap,
       {
         focusTrapOptions,
         paused: props.focusTrapPaused
