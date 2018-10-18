@@ -71,7 +71,7 @@ class Modal extends React.Component {
   };
 
   checkUnderlayClick = event => {
-    if (this.dialogNode && this.dialogNode.contains(event.target)) return;
+    if (this.dialogNode && this.dialogNode.contains(event.target) || event.pageX > event.target.clientWidth || event.pageY > event.target.clientHeight) return;
     this.exit();
   };
 
