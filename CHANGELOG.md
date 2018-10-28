@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+- Fix bug causing click on the scrollbar (visible because the modal vertically overflows the viewport) to close the modal.
+
 ## 3.0.0
 
 - Update focus-trap (via focus-trap react), which includes a couple of behavior changes. **Probably this should not change behavior for your use case.** The key change is that focus management has been adjusted so that you can include tricky focusable elements like radio groups, iframes, and shadow DOM components within your modal — as long as the first and last focusable elements in the modal can still be detected by [Tabbable](https://github.com/davidtheclark/tabbable).
