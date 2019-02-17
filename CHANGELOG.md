@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## 3.1.0
 
 - `onExit` now receives the event that triggered it as its only argument, should you need to stop the event's propagation or treat it differently.
 
