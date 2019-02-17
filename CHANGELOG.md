@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+- `onExit` now receives the event that triggered it as its only argument, should you need to stop the event's propagation or treat it differently.
+
 ## 3.0.1
 
 - Fix bug causing click on the scrollbar (visible because the modal vertically overflows the viewport) to close the modal.

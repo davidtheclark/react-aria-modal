@@ -77,18 +77,18 @@ class Modal extends React.Component {
       || event.pageX > event.target.clientWidth
       || event.pageY > event.target.clientHeight
     ) return;
-    this.exit();
+    this.exit(event);
   };
 
   checkDocumentKeyDown = event => {
     if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
-      this.exit();
+      this.exit(event);
     }
   };
 
-  exit = () => {
+  exit = event => {
     if (this.props.onExit) {
-      this.props.onExit();
+      this.props.onExit(event);
     }
   };
 
