@@ -44,8 +44,8 @@ class DemoEight extends React.Component {
 
   render() {
     const focusTrapTrigger = this.state.innerFocusTrapActive
-      ? <button onClick={this.deactivateInnerFocusTrap}>deactivate</button>
-      : <button onClick={this.activateInnerFocusTrap}>activate</button>;
+      ? <button id="demo-eight-inner-trap-trigger" onClick={this.deactivateInnerFocusTrap}>deactivate</button>
+      : <button id="demo-eight-inner-trap-trigger" onClick={this.activateInnerFocusTrap}>activate</button>;
     const innerFocusTrap = !this.state.innerFocusTrapActive
       ? null
       : <FocusTrap
@@ -56,10 +56,11 @@ class DemoEight extends React.Component {
             style={{
               background: '#eee',
               border: '1px solid gray',
+              marginTop: 10,
               padding: 20
             }}
           >
-            <button>men</button>
+            <button>horses</button>
             <button
               style={{ marginLeft: 20 }}
               onClick={this.deactivateInnerFocusTrap}
@@ -73,10 +74,10 @@ class DemoEight extends React.Component {
       ? <AriaModal
           titleText="demo one"
           onExit={this.deactivateModal}
-          initialFocus="#demo-eight-deactivate"
+          initialFocus="#demo-eight-inner-trap-trigger"
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
-          focusTrapPaused={this.state.innerFocusTrapActive}
+          escapeExits={!this.state.innerFocusTrapActive}
         >
           <div id="demo-eight-modal" className="modal">
             <div className="modal-body">
