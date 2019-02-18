@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## 4.0.0
 
 - Update focus-trap (via focus-trap-react), which now includes better handling for nested focus traps (including nested modals).
 - Fix bug causing underlay click not to exit when clicked if `scrollDisabled` is set to `false`.
