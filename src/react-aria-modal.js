@@ -24,21 +24,20 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    const props = this.props;
-    if (props.onEnter) {
-      props.onEnter();
+    if (this.props.onEnter) {
+      this.props.onEnter();
     }
 
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
-    setTimeout(function() {
+    setTimeout(() => {
       if (applicationNode) {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
 
-    if (props.escapeExits) {
-      document.addEventListener('keydown', this.checkDocumentKeyDown);
+    if (this.props.escapeExits) {
+      this.addKeyDownListener();
     }
 
     if (this.props.scrollDisabled) {
@@ -52,6 +51,12 @@ class Modal extends React.Component {
     } else if (!prevProps.scrollDisabled && this.props.scrollDisabled) {
       noScroll.on();
     }
+
+    if (this.props.escapeExits && !prevProps.escapeExits) {
+      this.addKeyDownListener();
+    } else if (!this.props.escapeExits && prevProps.escapeExits) {
+      this.removeKeyDownListener();
+    }
   }
 
   componentWillUnmount() {
@@ -62,7 +67,19 @@ class Modal extends React.Component {
     if (applicationNode) {
       applicationNode.setAttribute('aria-hidden', 'false');
     }
-    document.removeEventListener('keydown', this.checkDocumentKeyDown);
+    this.removeKeyDownListener();
+  }
+
+  addKeyDownListener() {
+    setTimeout(() => {
+      document.addEventListener('keydown', this.checkDocumentKeyDown);
+    });
+  }
+
+  removeKeyDownListener() {
+    setTimeout(() => {
+      document.removeEventListener('keydown', this.checkDocumentKeyDown);
+    });
   }
 
   getApplicationNode = () => {
@@ -72,16 +89,20 @@ class Modal extends React.Component {
 
   checkUnderlayClick = event => {
     if (
-      this.dialogNode && this.dialogNode.contains(event.target)
+      (this.dialogNode && this.dialogNode.contains(event.target)) ||
       // If the click is on the scrollbar we don't want to close the modal.
-      || event.pageX > event.target.clientWidth
-      || event.pageY > event.target.clientHeight
-    ) return;
+      event.pageX > event.target.ownerDocument.documentElement.offsetWidth ||
+      event.pageY > event.target.ownerDocument.documentElement.offsetHeight
+    )
+      return;
     this.exit(event);
   };
 
   checkDocumentKeyDown = event => {
-    if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
+    if (
+      this.props.escapeExits &&
+      (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27)
+    ) {
       this.exit(event);
     }
   };

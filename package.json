@@ -31,34 +31,35 @@
   },
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
-    "focus-trap-react": "^4.0.0",
+    "focus-trap-react": "^6.0.0",
     "no-scroll": "^2.1.1",
     "react-displace": "^2.3.0"
   },
   "peerDependencies": {
-    "react": "0.14.x || ^15.0.0 || ^16.0.0"
+    "react": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.2",
-    "budo": "^11.3.2",
-    "eslint": "^5.3.0",
-    "prettier": "1.14.1",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "budo": "^11.6.0",
+    "eslint": "^5.14.0",
+    "prettier": "1.16.4",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
   },
   "babel": {
     "presets": [
-      "react",
-      "env"
+      "@babel/preset-react",
+      "@babel/preset-env"
     ],
     "plugins": [
-      "transform-class-properties"
+      "@babel/plugin-proposal-class-properties"
     ]
   }
 }
