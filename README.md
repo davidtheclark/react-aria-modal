@@ -156,7 +156,7 @@ Any `data-*` or `aria-*` props that you provide will be passed directly to the m
 
 Type: `Function`
 
-This function handles the state change of *exiting* (or deactivating) the modal. 
+This function handles the state change of *exiting* (or deactivating) the modal.
 It will be invoked when the user clicks outside the modal (if `underlayClickExits={true}`, as is the default) or hits Escape (if `escapeExits={true}`, as is the default), and it receives the event that triggered it as its only argument.
 
 Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to *you* instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
@@ -344,7 +344,9 @@ If `true`, the modal's contents will be vertically (as well as horizontally) cen
 Type: `boolean`
 
 If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be paused.
-You'll want to use this prop if you have another nested focus trap *inside* the modal.
+
+You won't typically need to use this prop.
+It used to be that the typical reason for pausing a focus trap was to enable *nested* focus traps; but as of [focus-trap v4](https://github.com/davidtheclark/focus-trap/blob/master/CHANGELOG.md#400), the pausing and unpausing of hierachical traps is handled automatically.
 
 ### focusTrapOptions
 
@@ -357,7 +359,7 @@ For example, you can use this prop if you need better control of where focus is 
 
 Type: `boolean`, Default: `true`
 
-If `true`, the modal dialog will prevent any scrolling behind the modal window. 
+If `true`, the modal dialog will prevent any scrolling behind the modal window.
 
 ## AriaModal.renderTo(HTMLElement | string)
 
