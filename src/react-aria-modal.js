@@ -31,16 +31,16 @@ class Modal extends React.Component {
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
     setTimeout(() => {
-      if (applicationNode) {
+      if (applicationNode && !this.props.hidden) {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
 
-    if (this.props.escapeExits) {
+    if (this.props.escapeExits && !this.props.hidden) {
       this.addKeyDownListener();
     }
 
-    if (this.props.scrollDisabled) {
+    if (this.props.scrollDisabled  && !this.props.hidden) {
       noScroll.on();
     }
   }
@@ -48,11 +48,11 @@ class Modal extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.scrollDisabled && !this.props.scrollDisabled) {
       noScroll.off();
-    } else if (!prevProps.scrollDisabled && this.props.scrollDisabled) {
+    } else if (!prevProps.scrollDisabled && this.props.scrollDisabled  && !this.props.hidden) {
       noScroll.on();
     }
 
-    if (this.props.escapeExits && !prevProps.escapeExits) {
+    if (this.props.escapeExits && !prevProps.escapeExits  && !this.props.hidden) {
       this.addKeyDownListener();
     } else if (!this.props.escapeExits && prevProps.escapeExits) {
       this.removeKeyDownListener();
@@ -119,6 +119,7 @@ class Modal extends React.Component {
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
+        display: props.hidden ? 'none' : 'block',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -149,7 +150,7 @@ class Modal extends React.Component {
 
     const underlayProps = {
       className: props.underlayClass,
-      style: style
+      style: style,
     };
 
     if (props.underlayClickExits) {
@@ -158,6 +159,10 @@ class Modal extends React.Component {
 
     for (const prop in this.props.underlayProps) {
       underlayProps[prop] = this.props.underlayProps[prop];
+    }
+
+    if (props.hidden) {
+      underlayProps['aria-hidden'] = true;
     }
 
     let verticalCenterStyle = {};
@@ -246,7 +251,7 @@ class Modal extends React.Component {
       FocusTrap,
       {
         focusTrapOptions,
-        paused: props.focusTrapPaused
+        paused: props.hidden ? true : props.focusTrapPaused
       },
       React.createElement('div', underlayProps, childrenArray)
     );
