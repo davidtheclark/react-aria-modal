@@ -279,8 +279,6 @@ class Modal extends React.Component {
     }
     focusTrapOptions.escapeDeactivates = props.escapeExits;
 
-    console.log(props.visible)
-
     return React.createElement(
       FocusTrap,
       {
