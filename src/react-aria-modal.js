@@ -16,35 +16,42 @@ class Modal extends React.Component {
     visible: true
   };
 
-  componentWillMount() {
-    if (!this.props.titleText && !this.props.titleId) {
-      throw new Error(
-        'react-aria-modal instances should have a `titleText` or `titleId`'
-      );
-    }
-  }
-
   init(props) {
-    if (!props.visible) return;
+    const {
+      visible,
+      onEnter,
+      escapeExits,
+      scrollDisabled
+    } = props;
 
-    if (props.onEnter) {
-      props.onEnter();
+    if (!visible) return;
+
+    if (onEnter) {
+      onEnter();
     }
 
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
     setTimeout(() => {
-      if (props.visible && applicationNode) {
+      if (visible && applicationNode) {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
 
-    if (props.visible && props.escapeExits) {
+    if (visible && escapeExits) {
       this.addKeyDownListener();
     }
 
-    if (props.visible && props.scrollDisabled) {
+    if (visible && scrollDisabled) {
       noScroll.on();
+    }
+  }
+
+  componentWillMount() {
+    if (!this.props.titleText && !this.props.titleId) {
+      throw new Error(
+        'react-aria-modal instances should have a `titleText` or `titleId`'
+      );
     }
   }
 
