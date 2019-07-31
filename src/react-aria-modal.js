@@ -24,7 +24,13 @@ class Modal extends React.Component {
       scrollDisabled
     } = props;
 
-    if (!visible) return;
+    if (!visible) {
+      if (scrollDisabled) {
+        noScroll.off();
+      }
+
+      return;
+    }
 
     if (onEnter) {
       onEnter();
@@ -62,7 +68,7 @@ class Modal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.visible && this.props.visible) {
+    if (prevProps.visible !== this.props.visible) {
       this.init(this.props);
     }
 
@@ -272,6 +278,8 @@ class Modal extends React.Component {
         : props.initialFocus;
     }
     focusTrapOptions.escapeDeactivates = props.escapeExits;
+
+    console.log(props.visible)
 
     return React.createElement(
       FocusTrap,
