@@ -12,7 +12,8 @@ class Modal extends React.Component {
     underlayColor: 'rgba(0,0,0,0.5)',
     includeDefaultStyles: true,
     focusTrapPaused: false,
-    scrollDisabled: true
+    scrollDisabled: true,
+    visible: true
   };
 
   componentWillMount() {
@@ -23,32 +24,54 @@ class Modal extends React.Component {
     }
   }
 
-  componentDidMount() {
-    if (this.props.onEnter) {
-      this.props.onEnter();
+  init(props) {
+    if (!props.visible) return;
+
+    if (props.onEnter) {
+      props.onEnter();
     }
 
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
     setTimeout(() => {
-      if (applicationNode) {
+      if (props.visible && applicationNode) {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
     }, 0);
 
-    if (this.props.escapeExits) {
+    if (props.visible && props.escapeExits) {
       this.addKeyDownListener();
     }
 
-    if (this.props.scrollDisabled) {
+    if (props.visible && props.scrollDisabled) {
       noScroll.on();
     }
   }
 
+  componentDidMount() {
+    if (!this.props.visible) return;
+
+    this.init(this.props)
+  }
+
   componentDidUpdate(prevProps) {
+    if (!prevProps.visible && this.props.visible) {
+      this.init(this.props);
+    }
+
+    // Timeout to ensure this happens *after* focus has moved
+    const applicationNode = this.getApplicationNode();
+    setTimeout(() => {
+      if (this.props.visible && applicationNode) {
+        applicationNode.setAttribute('aria-hidden', 'true');
+      } else if (applicationNode) {
+        applicationNode.setAttribute('aria-hidden', 'false');
+      }
+    }, 0);
+
     if (prevProps.scrollDisabled && !this.props.scrollDisabled) {
       noScroll.off();
-    } else if (!prevProps.scrollDisabled && this.props.scrollDisabled) {
+    } else if (this.props.visible && !prevProps.scrollDisabled && this.props.scrollDisabled) {
       noScroll.on();
     }
 
@@ -119,6 +142,7 @@ class Modal extends React.Component {
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
+        display: this.props.visible ? 'block' : 'none',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -246,7 +270,8 @@ class Modal extends React.Component {
       FocusTrap,
       {
         focusTrapOptions,
-        paused: props.focusTrapPaused
+        paused: props.focusTrapPaused,
+        active: props.visible
       },
       React.createElement('div', underlayProps, childrenArray)
     );
