@@ -149,7 +149,7 @@ class Modal extends React.Component {
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
-        display: this.props.visible ? 'block' : 'none',
+        display: props.visible ? 'block' : 'none',
         position: 'fixed',
         top: 0,
         left: 0,
