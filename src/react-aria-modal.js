@@ -15,7 +15,7 @@ class Modal extends React.Component {
     scrollDisabled: true
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.props.titleText && !this.props.titleId) {
       throw new Error(
         'react-aria-modal instances should have a `titleText` or `titleId`'
@@ -142,7 +142,7 @@ class Modal extends React.Component {
 
     if (props.underlayStyle) {
       for (const key in props.underlayStyle) {
-        if (!props.underlayStyle.hasOwnProperty(key)) continue;
+        if (!props.underlayStyle.includes(key)) continue;
         style[key] = props.underlayStyle[key];
       }
     }
@@ -193,7 +193,7 @@ class Modal extends React.Component {
 
     if (props.dialogStyle) {
       for (const key in props.dialogStyle) {
-        if (!props.dialogStyle.hasOwnProperty(key)) continue;
+        if (!props.dialogStyle.includes(key)) continue;
         dialogStyle[key] = props.dialogStyle[key];
       }
     }
