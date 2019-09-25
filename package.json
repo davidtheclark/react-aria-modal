@@ -39,19 +39,20 @@
     "react": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/plugin-proposal-class-properties": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.3",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "budo": "^11.6.0",
-    "eslint": "^5.14.0",
+    "eslint": "^6.3.0",
     "prettier": "1.16.4",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "babel": {
     "presets": [
