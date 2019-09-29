@@ -15,14 +15,6 @@ class Modal extends React.Component {
     scrollDisabled: true
   };
 
-  UNSAFE_componentWillMount() {
-    if (!this.props.titleText && !this.props.titleId) {
-      throw new Error(
-        'react-aria-modal instances should have a `titleText` or `titleId`'
-      );
-    }
-  }
-
   componentDidMount() {
     if (this.props.onEnter) {
       this.props.onEnter();
@@ -208,6 +200,13 @@ class Modal extends React.Component {
       className: props.dialogClass,
       style: dialogStyle
     };
+
+    if (!this.props.titleText && !this.props.titleId) {
+      throw new Error(
+        'react-aria-modal instances should have a `titleText` or `titleId`'
+      );
+    }
+
     if (props.titleId) {
       dialogProps['aria-labelledby'] = props.titleId;
     } else if (props.titleText) {
