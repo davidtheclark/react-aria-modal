@@ -134,7 +134,7 @@ class Modal extends React.Component {
 
     if (props.underlayStyle) {
       for (const key in props.underlayStyle) {
-        if (!props.underlayStyle.includes(key)) continue;
+        if (!props.underlayStyle.hasOwnProperty(key)) continue;
         style[key] = props.underlayStyle[key];
       }
     }
@@ -185,7 +185,7 @@ class Modal extends React.Component {
 
     if (props.dialogStyle) {
       for (const key in props.dialogStyle) {
-        if (!props.dialogStyle.includes(key)) continue;
+        if (!props.dialogStyle.hasOwnProperty(key)) continue;
         dialogStyle[key] = props.dialogStyle[key];
       }
     }
