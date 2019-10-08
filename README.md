@@ -3,7 +3,7 @@
 
 ---
 
-**SEEKING CO-MAINTAINERS!** Continued development of this project is going to require the work of one or more dedicated co-maintainers (or forkers). If you're interested, please comment in [this issue](https://github.com/davidtheclark/react-aria-modal/90).
+**SEEKING CO-MAINTAINERS!** Continued development of this project is going to require the work of one or more dedicated co-maintainers (or forkers). If you're interested, please comment in [this issue](https://github.com/davidtheclark/react-aria-modal/issues/90).
 
 ---
 
