@@ -156,31 +156,31 @@ When the modal is mounted, you'll notice the following:
 - The modal is appended to `document.body`, not inserted directly into the HTML source order, as you might assume; but it should still update correctly. (This makes positioning easier (no weird nested z-index troubles).)
 
 ## API
-|Name| Type | Default|
-|---|---|---|
-| [alert](#alert) | `Boolean` | |
-| [applicationNode](#applicationNode) | `DOM Node` | |
-| [dialogClass](#dialogClass) | `String` | |
-| [dialogId](#dialogId) | `String` | `react-aria-modal-dialog` |
-| [dialogStyle](#dialogStyle) | `Object` | |
-| [escapeExits](#escapeExits) | `Boolean` | `true` |
-| [focusDialog](#focusDialog) | `Boolean` | |
-| [focusTrapOptions](#focusTrapOptions) | `Object` | |
-| [focusTrapPaused](#focusTrapPaused) | `Boolean` | |
-| [getApplicationNode](#getApplicationNode) | `() => void` | |
-| [includeDefaultStyles](#includeDefaultStyles) | `Boolean` | `true` |
-| [initialFocus](#initialFocus) | `String` | |
-| [mounted](#mounted) | `Boolean` | |
-| [onEnter](#onEnter) | `() => void` | |
-| [onExit](#onExit) | `(event) => void` | |
-| [scrollDisabled](#scrollDisabled) | `Boolean` | `true` |
-| [titleId](#titleId) | `String` | |
-| [titleText](#titleText) | `String` | |
-| [underlayClass](#underlayClass) | `String` | |
-| [underlayClickExits](#underlayClickExits) | `Boolean` | `true` |
-| [underlayColor](#underlayColor) | `String` (color value) or `false` | `rgba(0,0,0,0.5)` |
-| [underlayStyle](#underlayStyle) | `Object` | |
-| [verticallyCenter](#verticallyCenter) | `Boolean` | |
+|Name| Type (`Default`) |
+|---|---|
+| [alert](#alert) | `Boolean` |
+| [applicationNode](#applicationNode) | `DOM Node` |
+| [dialogClass](#dialogClass) | `String` |
+| [dialogId](#dialogId) | `String` (`'react-aria-modal-dialog'`) |
+| [dialogStyle](#dialogStyle) | `Object` |
+| [escapeExits](#escapeExits) | `Boolean` (`true`) |
+| [focusDialog](#focusDialog) | `Boolean` |
+| [focusTrapOptions](#focusTrapOptions) | `Object` |
+| [focusTrapPaused](#focusTrapPaused) | `Boolean` |
+| [getApplicationNode](#getApplicationNode) | `() => void` |
+| [includeDefaultStyles](#includeDefaultStyles) | `Boolean` (`true`) |
+| [initialFocus](#initialFocus) | `String` |
+| [mounted](#mounted) | `Boolean` |
+| [onEnter](#onEnter) | `() => void` |
+| [onExit](#onExit) | `(event) => void` |
+| [scrollDisabled](#scrollDisabled) | `Boolean` (`true`) |
+| [titleId](#titleId) | `String` |
+| [titleText](#titleText) | `String` |
+| [underlayClass](#underlayClass) | `String` |
+| [underlayClickExits](#underlayClickExits) | `Boolean` (`true`) |
+| [underlayColor](#underlayColor) | `String` (`'rgba(0,0,0,0.5)'`) |
+| [underlayStyle](#underlayStyle) | `Object` |
+| [verticallyCenter](#verticallyCenter) | `Boolean` |
 
 ## Reference API
 
