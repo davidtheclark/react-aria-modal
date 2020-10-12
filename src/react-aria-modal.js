@@ -108,6 +108,9 @@ class Modal extends React.Component {
   render() {
     const props = this.props;
 
+    const objHasOwnProperty = (object, prop) =>
+      Object.prototype.hasOwnProperty.call(object, prop);
+
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
@@ -134,7 +137,8 @@ class Modal extends React.Component {
 
     if (props.underlayStyle) {
       for (const key in props.underlayStyle) {
-        if (!props.underlayStyle.hasOwnProperty(key)) continue;
+        const underlayStyle = props;
+        if (!objHasOwnProperty(underlayStyle, key)) continue;
         style[key] = props.underlayStyle[key];
       }
     }
@@ -185,7 +189,8 @@ class Modal extends React.Component {
 
     if (props.dialogStyle) {
       for (const key in props.dialogStyle) {
-        if (!props.dialogStyle.hasOwnProperty(key)) continue;
+        const dialogStyle = props;
+        if (!objHasOwnProperty(dialogStyle, key)) continue;
         dialogStyle[key] = props.dialogStyle[key];
       }
     }
