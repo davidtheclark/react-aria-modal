@@ -15,14 +15,6 @@ class Modal extends React.Component {
     scrollDisabled: true
   };
 
-  componentWillMount() {
-    if (!this.props.titleText && !this.props.titleId) {
-      throw new Error(
-        'react-aria-modal instances should have a `titleText` or `titleId`'
-      );
-    }
-  }
-
   componentDidMount() {
     if (this.props.onEnter) {
       this.props.onEnter();
@@ -116,6 +108,9 @@ class Modal extends React.Component {
   render() {
     const props = this.props;
 
+    const objHasOwnProperty = (object, prop) =>
+      Object.prototype.hasOwnProperty.call(object, prop);
+
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
@@ -142,7 +137,8 @@ class Modal extends React.Component {
 
     if (props.underlayStyle) {
       for (const key in props.underlayStyle) {
-        if (!props.underlayStyle.hasOwnProperty(key)) continue;
+        const underlayStyle = props;
+        if (!objHasOwnProperty(underlayStyle, key)) continue;
         style[key] = props.underlayStyle[key];
       }
     }
@@ -193,7 +189,8 @@ class Modal extends React.Component {
 
     if (props.dialogStyle) {
       for (const key in props.dialogStyle) {
-        if (!props.dialogStyle.hasOwnProperty(key)) continue;
+        const dialogStyle = props;
+        if (!objHasOwnProperty(dialogStyle, key)) continue;
         dialogStyle[key] = props.dialogStyle[key];
       }
     }
@@ -208,6 +205,13 @@ class Modal extends React.Component {
       className: props.dialogClass,
       style: dialogStyle
     };
+
+    if (!this.props.titleText && !this.props.titleId) {
+      throw new Error(
+        'react-aria-modal instances should have a `titleText` or `titleId`'
+      );
+    }
+
     if (props.titleId) {
       dialogProps['aria-labelledby'] = props.titleId;
     } else if (props.titleText) {
