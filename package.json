@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
-    "focus-trap-react": "^6.0.0",
+    "focus-trap-react": "^8.1.0",
     "no-scroll": "^2.1.1",
     "react-displace": "^2.3.0"
   },
@@ -47,10 +47,10 @@
     "@babel/preset-react": "^7.10.4",
     "babel-eslint": "^10.1.0",
     "babelify": "^10.0.0",
-    "browserify": "^16.5.2",
+    "browserify": "^17.0.0",
     "budo": "^11.6.4",
-    "eslint": "^6.8.0",
-    "prettier": "1.16.4",
+    "eslint": "^7.11.0",
+    "prettier": "2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
