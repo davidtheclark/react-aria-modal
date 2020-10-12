@@ -3,6 +3,13 @@ const FocusTrap = require('focus-trap-react');
 const displace = require('react-displace');
 const noScroll = require('no-scroll');
 
+function hasOwnProperty(object, prop) {
+  return Object
+    .prototype
+    .hasOwnProperty
+    .call(object, prop)
+}
+
 class Modal extends React.Component {
   static defaultProps = {
     underlayProps: {},
@@ -15,14 +22,6 @@ class Modal extends React.Component {
     scrollDisabled: true
   };
 
-  componentWillMount() {
-    if (!this.props.titleText && !this.props.titleId) {
-      throw new Error(
-        'react-aria-modal instances should have a `titleText` or `titleId`'
-      );
-    }
-  }
-
   componentDidMount() {
     if (this.props.onEnter) {
       this.props.onEnter();
@@ -30,7 +29,7 @@ class Modal extends React.Component {
 
     // Timeout to ensure this happens *after* focus has moved
     const applicationNode = this.getApplicationNode();
-    setTimeout(() => {
+    setTimeout(function() {
       if (applicationNode) {
         applicationNode.setAttribute('aria-hidden', 'true');
       }
@@ -71,23 +70,23 @@ class Modal extends React.Component {
   }
 
   addKeyDownListener() {
-    setTimeout(() => {
+    setTimeout(function() {
       document.addEventListener('keydown', this.checkDocumentKeyDown);
     });
   }
 
   removeKeyDownListener() {
-    setTimeout(() => {
+    setTimeout(function() {
       document.removeEventListener('keydown', this.checkDocumentKeyDown);
     });
   }
 
-  getApplicationNode = () => {
+  getApplicationNode() {
     if (this.props.getApplicationNode) return this.props.getApplicationNode();
     return this.props.applicationNode;
-  };
+  }
 
-  checkUnderlayClick = event => {
+  checkUnderlayClick(event) {
     if (
       (this.dialogNode && this.dialogNode.contains(event.target)) ||
       // If the click is on the scrollbar we don't want to close the modal.
@@ -96,26 +95,32 @@ class Modal extends React.Component {
     )
       return;
     this.exit(event);
-  };
+  }
 
-  checkDocumentKeyDown = event => {
+  checkDocumentKeyDown(event) {
     if (
       this.props.escapeExits &&
       (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27)
     ) {
       this.exit(event);
     }
-  };
-
-  exit = event => {
+  }
+  
+  exit(event) {
     if (this.props.onExit) {
       this.props.onExit(event);
     }
-  };
-
+  }
+  
   render() {
     const props = this.props;
 
+    if (!this.props.titleText && !this.props.titleId) {
+      throw new Error(
+        'react-aria-modal instances should have a `titleText` or `titleId`'
+      );
+    }
+    
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
@@ -142,7 +147,7 @@ class Modal extends React.Component {
 
     if (props.underlayStyle) {
       for (const key in props.underlayStyle) {
-        if (!props.underlayStyle.hasOwnProperty(key)) continue;
+        if (!hasOwnProperty(props.underlayStyle, key)) continue;
         style[key] = props.underlayStyle[key];
       }
     }
@@ -193,7 +198,7 @@ class Modal extends React.Component {
 
     if (props.dialogStyle) {
       for (const key in props.dialogStyle) {
-        if (!props.dialogStyle.hasOwnProperty(key)) continue;
+        if (!hasOwnProperty(props.dialogStyle, key)) continue;
         dialogStyle[key] = props.dialogStyle[key];
       }
     }
@@ -208,11 +213,13 @@ class Modal extends React.Component {
       className: props.dialogClass,
       style: dialogStyle
     };
+
     if (props.titleId) {
       dialogProps['aria-labelledby'] = props.titleId;
     } else if (props.titleText) {
       dialogProps['aria-label'] = props.titleText;
     }
+
     if (props.focusDialog) {
       dialogProps.tabIndex = '-1';
     }
