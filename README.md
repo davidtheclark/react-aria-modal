@@ -346,6 +346,12 @@ Type: `boolean`
 
 If `true`, the modal's contents will be vertically (as well as horizontally) centered.
 
+### focusTrapActive
+
+Type: `boolean`, Default: `true`
+
+If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be active.
+
 ### focusTrapPaused
 
 Type: `boolean`

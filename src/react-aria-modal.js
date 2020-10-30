@@ -11,6 +11,7 @@ class Modal extends React.Component {
     escapeExits: true,
     underlayColor: 'rgba(0,0,0,0.5)',
     includeDefaultStyles: true,
+    focusTrapActive: true,
     focusTrapPaused: false,
     scrollDisabled: true
   };
@@ -246,6 +247,7 @@ class Modal extends React.Component {
       FocusTrap,
       {
         focusTrapOptions,
+        active: props.focusTrapActive,
         paused: props.focusTrapPaused
       },
       React.createElement('div', underlayProps, childrenArray)
