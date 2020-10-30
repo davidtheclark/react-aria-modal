@@ -8,3 +8,4 @@ require('./demo-seven');
 require('./demo-eight');
 require('./demo-nine');
 require('./demo-ten');
+require('./demo-eleven');
