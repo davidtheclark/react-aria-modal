@@ -1,5 +1,13 @@
 # Changelog
 
+## HEAD
+
+## 4.0.1
+
+- Move `componentWillMount` content to `constructor` to avoid deprecation message.
+- Update `@babel/preset-env` to `v7.15.0` to remove `browserslist` update message.
+- Update `focus-trap-react` package to `v8.1.0`.
+
 ## 4.0.0
 
 - Update focus-trap (via focus-trap-react), which now includes better handling for nested focus traps (including nested modals).
