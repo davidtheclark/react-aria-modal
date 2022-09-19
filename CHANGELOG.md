@@ -2,6 +2,12 @@
 
 ## HEAD
 
+## 4.0.2
+
+- Update peer dependencies for React 17 (#127)
+- Changed cursor in dialogStyle to `auto` (#124)
+- Improve Documentation (#104)
+
 ## 4.0.1
 
 - Move `componentWillMount` content to `constructor` to avoid deprecation message.
