@@ -155,52 +155,54 @@ When the modal is mounted, you'll notice the following:
 - Your content is horizontally centered. You can also vertically center it, if you wish.
 - The modal is appended to `document.body`, not inserted directly into the HTML source order, as you might assume; but it should still update correctly. (This makes positioning easier (no weird nested z-index troubles).)
 
-## Props
+## API
+|Name| Type (`Default`) |
+|---|---|
+| [alert](#alert) | `Boolean` |
+| [applicationNode](#applicationNode) | `DOM Node` |
+| [dialogClass](#dialogClass) | `String` |
+| [dialogId](#dialogId) | `String` (`'react-aria-modal-dialog'`) |
+| [dialogStyle](#dialogStyle) | `Object` |
+| [escapeExits](#escapeExits) | `Boolean` (`true`) |
+| [focusDialog](#focusDialog) | `Boolean` |
+| [focusTrapOptions](#focusTrapOptions) | `Object` |
+| [focusTrapPaused](#focusTrapPaused) | `Boolean` |
+| [getApplicationNode](#getApplicationNode) | `() => void` |
+| [includeDefaultStyles](#includeDefaultStyles) | `Boolean` (`true`) |
+| [initialFocus](#initialFocus) | `String` |
+| [mounted](#mounted) | `Boolean` |
+| [onEnter](#onEnter) | `() => void` |
+| [onExit](#onExit) | `(event) => void` |
+| [scrollDisabled](#scrollDisabled) | `Boolean` (`true`) |
+| [titleId](#titleId) | `String` |
+| [titleText](#titleText) | `String` |
+| [underlayClass](#underlayClass) | `String` |
+| [underlayClickExits](#underlayClickExits) | `Boolean` (`true`) |
+| [underlayColor](#underlayColor) | `String` (`'rgba(0,0,0,0.5)'`) |
+| [underlayStyle](#underlayStyle) | `Object` |
+| [verticallyCenter](#verticallyCenter) | `Boolean` |
+
+## Reference API
 
 Any `data-*` or `aria-*` props that you provide will be passed directly to the modal's container `<div>`.
 
-### onExit
+### alert
 
-Type: `Function`
+_Type_: `Boolean`
 
-This function handles the state change of *exiting* (or deactivating) the modal.
-It will be invoked when the user clicks outside the modal (if `underlayClickExits={true}`, as is the default) or hits Escape (if `escapeExits={true}`, as is the default), and it receives the event that triggered it as its only argument.
-
-Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to *you* instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
-
-You may omit this prop if you don't want clicks outside the modal or Escape to close it, so don't want to provide a function.
+If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only be used when an alert, error, or warning occurs ([more info](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role)).
 
 ### applicationNode
 
-Type: `DOM Node`
+_Type_: `DOM Node`
 
 Provide your main application node here (which the modal should render outside of), and when the modal is open this application node will receive the attribute `aria-hidden="true"`. This [can help screen readers understand what's going on](https://www.w3.org/WAI/GL/wiki/Using_ARIA_role%3Ddialog_to_implement_a_modal_dialog_box#Description).
 
 This module can't guess your application node, so you have to provide this prop to get the full accessibility benefit.
 
-### getApplicationNode
-
-Type: `Function`
-
-Same as `applicationNode`, but a function that returns the node instead of the node itself. This can be useful or necessary in a variety of situations, one of which is server-side React rendering. The function will not be called until after the component mounts, so it is safe to use browser globals and refer to DOM nodes within it (e.g. `document.getElementById(..)`), without ruining your server-side rendering.
-
-### alert
-
-Type: `Boolean`
-
-If `true`, the modal will receive a `role` of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only be used when an alert, error, or warning occurs ([more info](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role)).
-
-### includeDefaultStyles
-
-Type: `Boolean`, Default: `true`
-
-By default, styles are applied inline to the  dialog and underlay portions of the component.  However, you can disable all inline styles by setting `includeDefaultStyles` to `false`.  If set, *you must specify all styles externally*, including positioning.  This is helpful if your project uses external CSS assets.
-
-*Note:* `underlayStyle` and `dialogStyle` can still be set inline, but these will be the only styles applied.
-
 ### dialogClass
 
-Type: `String`
+_Type_: `String`
 
 Apply a class to the dialog in order to custom-style it.
 
@@ -208,19 +210,29 @@ Be aware that, *by default*, this module does apply various inline styles to the
 
 ### dialogId
 
-Type: `String`, Default: `react-aria-modal-dialog`
+_Type_: `String`
+
+_Default_: `react-aria-modal-dialog`
 
 Choose your own id attribute for the dialog element.
 
 ### dialogStyle
 
-Type: `Object`
+_Type_: `Object`
 
 Customize properties of the `style` prop that is passed to the dialog.
 
+### escapeExits
+
+_Type_: `Boolean`
+
+_Default_: `true`
+
+By default, the Escape key exits the modal. Pass `false`, and it won't.
+
 ### focusDialog
 
-Type: `Boolean`
+_Type_: `Boolean`
 
 By default, when the modal activates its first focusable child will receive focus.
 However, if `focusDialog` is `true`, the dialog itself will receive initial focus —
@@ -228,9 +240,41 @@ and that focus will be hidden. (This is essentially what Bootstrap does with the
 
 See the example below.
 
+### focusTrapOptions
+
+_Type_: `Object`
+
+Customize properties of the `focusTrapOptions` prop that is passed to the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap).
+For example, you can use this prop if you need better control of where focus is returned.
+
+### focusTrapPaused
+
+_Type_: `Boolean`
+
+If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be paused.
+
+You won't typically need to use this prop.
+It used to be that the typical reason for pausing a focus trap was to enable *nested* focus traps; but as of [focus-trap v4](https://github.com/davidtheclark/focus-trap/blob/master/CHANGELOG.md#400), the pausing and unpausing of hierachical traps is handled automatically.
+
+### getApplicationNode
+
+_Type_: `() => void`
+
+Same as `applicationNode`, but a function that returns the node instead of the node itself. This can be useful or necessary in a variety of situations, one of which is server-side React rendering. The function will not be called until after the component mounts, so it is safe to use browser globals and refer to DOM nodes within it (e.g. `document.getElementById(..)`), without ruining your server-side rendering.
+
+### includeDefaultStyles
+
+_Type_: `Boolean`
+
+_Default_: `true`
+
+By default, styles are applied inline to the  dialog and underlay portions of the component.  However, you can disable all inline styles by setting `includeDefaultStyles` to `false`.  If set, *you must specify all styles externally*, including positioning.  This is helpful if your project uses external CSS assets.
+
+*Note:* `underlayStyle` and `dialogStyle` can still be set inline, but these will be the only styles applied.
+
 ### initialFocus
 
-Type: `String`
+_Type_: `String`
 
 By default, when the modal activates its first focusable child will receive focus. If, instead, you want to *identify a specific element that should receive initial focus*, pass a *selector string* to this prop. (That selector is passed to `document.querySelector()` to find the DOM node.)
 
@@ -238,7 +282,7 @@ Demo example 3 and an additional example below illustrate a good method if you w
 
 ### mounted
 
-Type: `Boolean`
+_Type_: `Boolean`
 
 By default, the modal is active when mounted, deactivated when unmounted.
 However, you can also control its active/inactive state by changing its `mounted` property instead.
@@ -279,16 +323,35 @@ var MyComponentTakeTwo = React.createClass({
 
 ### onEnter
 
-Type: `Function`
+_Type_: `() => void`
 
 This function is called in the modal's `componentDidMount()` lifecycle method.
 You can use it to do whatever diverse and sundry things you feel like doing after the modal activates.
 
 Demo Five, for example, uses it to modify class names and enable some CSS transitions.
 
+### onExit
+
+_Type_: `(event) => void`
+
+This function handles the state change of *exiting* (or deactivating) the modal.
+It will be invoked when the user clicks outside the modal (if `underlayClickExits={true}`, as is the default) or hits Escape (if `escapeExits={true}`, as is the default), and it receives the event that triggered it as its only argument.
+
+Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to *you* instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
+
+You may omit this prop if you don't want clicks outside the modal or Escape to close it, so don't want to provide a function.
+
+### scrollDisabled
+
+_Type_: `Boolean`
+
+_Default_: `true`
+
+If `true`, the modal dialog will prevent any scrolling behind the modal window.
+
 ### titleId
 
-Type: `string`
+_Type_: `String`
 
 The id of the element that should be used as the modal's accessible title. This value is passed to the modal's `aria-labelledby` attribute.
 
@@ -296,24 +359,15 @@ You must use either `titleId` or `titleText`, but not both.
 
 ### titleText
 
-Type: `string`
+_Type_: `String`
 
 A string to use as the modal's accessible title. This value is passed to the modal's `aria-label` attribute.
 
 You must use either `titleId` or `titleText`, but not both.
 
-
-### underlayStyle
-
-Type: `object`
-
-Customize properties of the `style` prop that is passed to the underlay.
-
-**The best way to add some vertical displacement to the dialog is to add top & bottom padding to the underlay**. This is illustrated in the demo examples.
-
 ### underlayClass
 
-Type: `string`
+_Type_: `String`
 
 Apply a class to the underlay in order to custom-style it.
 
@@ -321,52 +375,36 @@ This module does apply various inline styles, though, so be aware that overridin
 
 ### underlayClickExits
 
-Type: `boolean`, Default: `true`
+_Type_: `Boolean`
+
+_Default_: `true`
 
 By default, a click on the underlay will exit the modal. Pass `false`, and clicking on the underlay will do nothing.
 
-### escapeExits
-
-Type: `boolean`, Default: `true`
-
-By default, the Escape key exits the modal. Pass `false`, and it won't.
-
 ### underlayColor
 
-Type: `string` (color value) or `false`, Default: `rgba(0,0,0,0.5)`
+_Type_: `String` (color value) or `false`
+
+_Default_: `rgba(0,0,0,0.5)`
 
 If you want to change the underlay's color, you can do that with this prop.
 
 If `false`, no background color will be applied with inline styles.
 Presumably you will apply then yourself via an `underlayClass`.
 
+### underlayStyle
+
+_Type_: `Object`
+
+Customize properties of the `style` prop that is passed to the underlay.
+
+**The best way to add some vertical displacement to the dialog is to add top & bottom padding to the underlay**. This is illustrated in the demo examples.
+
 ### verticallyCenter
 
-Type: `boolean`
+_Type_: `Boolean`
 
 If `true`, the modal's contents will be vertically (as well as horizontally) centered.
-
-### focusTrapPaused
-
-Type: `boolean`
-
-If `true`, the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap) will be paused.
-
-You won't typically need to use this prop.
-It used to be that the typical reason for pausing a focus trap was to enable *nested* focus traps; but as of [focus-trap v4](https://github.com/davidtheclark/focus-trap/blob/master/CHANGELOG.md#400), the pausing and unpausing of hierachical traps is handled automatically.
-
-### focusTrapOptions
-
-Type: `object`
-
-Customize properties of the `focusTrapOptions` prop that is passed to the modal dialog's [focus trap](https://github.com/davidtheclark/focus-trap).
-For example, you can use this prop if you need better control of where focus is returned.
-
-### scrollDisabled
-
-Type: `boolean`, Default: `true`
-
-If `true`, the modal dialog will prevent any scrolling behind the modal window.
 
 ## AriaModal.renderTo(HTMLElement | string)
 
