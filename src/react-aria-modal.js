@@ -182,7 +182,7 @@ class Modal extends React.Component {
         textAlign: 'left',
         top: 0,
         maxWidth: '100%',
-        cursor: 'default',
+        cursor: 'auto',
         outline: props.focusDialog ? 0 : null
       };
 
