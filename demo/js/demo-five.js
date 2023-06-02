@@ -1,5 +1,5 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
+const { createRoot } = require('react-dom/client');
 const AriaModal = require('../../src/react-aria-modal');
 
 class DemoFive extends React.Component {
@@ -86,4 +86,4 @@ class DemoFive extends React.Component {
   }
 }
 
-ReactDOM.render(<DemoFive />, document.getElementById('demo-five'));
+createRoot(document.getElementById('demo-five')).render(<DemoFive/>);

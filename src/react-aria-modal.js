@@ -1,6 +1,6 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const FocusTrap = require('focus-trap-react');
-const displace = require('react-displace');
 const noScroll = require('no-scroll');
 
 class Modal extends React.Component {
@@ -252,6 +252,60 @@ class Modal extends React.Component {
       React.createElement('div', underlayProps, childrenArray)
     );
   }
+}
+
+function displace(WrappedComponent, options) {
+  if (!global.document) {
+    return function EmptyDisplace() {
+      return null;
+    };
+  }
+
+  options = options || {};
+
+  class Displaced extends React.Component {
+    static defaultProps = {
+      mounted: true
+    };
+
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        container: null,
+      };
+    }
+
+    componentDidMount() {
+      let container;
+
+      if (options.renderTo) {
+        container = typeof options.renderTo === 'string' ? document.querySelector(options.renderTo) : options.renderTo;
+      } else {
+        container = document.createElement('div');
+        document.body.appendChild(container);
+      }
+
+      this.setState({ container });
+    }
+
+    componentWillUnmount() {
+      if (!options.renderTo) {
+        this.state.container.parentNode.removeChild(this.state.container);
+      }
+    }
+
+    render() {
+      if (this.state.container === null || !this.props.mounted) return null;
+
+      return ReactDOM.createPortal(
+        React.createElement(WrappedComponent, this.props, this.props.children),
+        this.state.container,
+      );
+    }
+  }
+
+  return Displaced;
 }
 
 const DisplacedModal = displace(Modal);

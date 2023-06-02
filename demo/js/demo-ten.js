@@ -1,6 +1,5 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
-const FocusTrap = require('focus-trap-react');
+const { createRoot } = require('react-dom/client');
 const AriaModal = require('../../src/react-aria-modal');
 
 class DemoTen extends React.Component {
@@ -19,7 +18,7 @@ class DemoTen extends React.Component {
   activateModal() {
     this.setState({ modalActive: true });
   }
-  
+
   deactivateModal = () => {
      this.setState({ modalActive: false });
   };
@@ -35,7 +34,7 @@ class DemoTen extends React.Component {
           onExit={this.deactivateModal}
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
-          focusTrapOptions={{ 
+          focusTrapOptions={{
             initialFocus:"#demo-ten-deactivate",
             returnFocusOnDeactivate: false
           }}
@@ -74,4 +73,4 @@ class DemoTen extends React.Component {
   }
 }
 
-ReactDOM.render(<DemoTen />, document.getElementById('demo-ten'));
+createRoot(document.getElementById('demo-ten')).render(<DemoTen/>);
