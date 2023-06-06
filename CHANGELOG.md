@@ -2,6 +2,12 @@
 
 ## HEAD
 
+## 5.0.0
+
+- Remove `react-displace` package from dependencies
+- Update `focus-trap-react` package to `v10.1.4`
+- Add support for React 18
+
 ## 4.0.2
 
 - Update peer dependencies for React 17 (#127)

@@ -1,6 +1,6 @@
 {
   "name": "react-aria-modal",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "description": "A fully accessible and flexible React modal built according WAI-ARIA Authoring Practices",
   "main": "dist/react-aria-modal.js",
   "scripts": {
@@ -31,12 +31,12 @@
   },
   "homepage": "https://github.com/davidtheclark/react-aria-modal#readme",
   "dependencies": {
-    "focus-trap-react": "^8.1.0",
-    "no-scroll": "^2.1.1",
-    "react-displace": "^2.3.0"
+    "focus-trap-react": "^10.1.4",
+    "no-scroll": "^2.1.1"
   },
   "peerDependencies": {
-    "react": ">= 15.0.0 < 18.0.0"
+    "react": ">=16.3.0",
+    "react-dom": ">=16.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -50,8 +50,8 @@
     "budo": "^11.8.4",
     "eslint": "^5.14.0",
     "prettier": "1.16.4",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "babel": {
     "presets": [

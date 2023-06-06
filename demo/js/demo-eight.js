@@ -1,5 +1,5 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
+const { createRoot } = require('react-dom/client');
 const FocusTrap = require('focus-trap-react');
 const AriaModal = require('../../src/react-aria-modal');
 
@@ -118,4 +118,4 @@ class DemoEight extends React.Component {
   }
 }
 
-ReactDOM.render(<DemoEight />, document.getElementById('demo-eight'));
+createRoot(document.getElementById('demo-eight')).render(<DemoEight/>);
