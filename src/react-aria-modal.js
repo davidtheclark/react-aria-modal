@@ -268,39 +268,31 @@ function displace(WrappedComponent, options) {
       mounted: true
     };
 
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        container: null,
-      };
-    }
+    container = null;
 
     componentDidMount() {
-      let container;
-
       if (options.renderTo) {
-        container = typeof options.renderTo === 'string' ? document.querySelector(options.renderTo) : options.renderTo;
+        this.container = typeof options.renderTo === 'string' ? document.querySelector(options.renderTo) : options.renderTo;
       } else {
-        container = document.createElement('div');
-        document.body.appendChild(container);
+        this.container = document.createElement('div');
+        document.body.appendChild(this.container);
       }
 
-      this.setState({ container });
+      this.forceUpdate();
     }
 
     componentWillUnmount() {
       if (!options.renderTo) {
-        this.state.container.parentNode.removeChild(this.state.container);
+        this.container.parentNode.removeChild(this.container);
       }
     }
 
     render() {
-      if (this.state.container === null || !this.props.mounted) return null;
+      if (this.container === null || !this.props.mounted) return null;
 
       return ReactDOM.createPortal(
         React.createElement(WrappedComponent, this.props, this.props.children),
-        this.state.container,
+        this.container,
       );
     }
   }
