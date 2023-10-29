@@ -2,6 +2,10 @@
 
 ## HEAD
 
+## 5.0.1
+
+- Fix Displaced component crash
+
 ## 5.0.0
 
 - Remove `react-displace` package from dependencies
