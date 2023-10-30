@@ -2,6 +2,10 @@
 
 ## HEAD
 
+## 5.0.2
+
+- s/prepublish/prepublishOnly
+
 ## 5.0.1
 
 - Fix Displaced component crash

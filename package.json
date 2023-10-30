@@ -1,6 +1,6 @@
 {
   "name": "react-aria-modal",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "A fully accessible and flexible React modal built according WAI-ARIA Authoring Practices",
   "main": "dist/react-aria-modal.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "demo-bundle": "browserify demo/js -t babelify -o demo/demo-bundle.js",
     "start": "budo demo/js/index.js:demo-bundle.js --live --dir demo -- -t babelify -o demo/demo-bundle.js",
     "build": "babel src -d dist",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "npm run lint"
   },
   "repository": {

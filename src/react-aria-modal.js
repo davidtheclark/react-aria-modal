@@ -272,7 +272,10 @@ function displace(WrappedComponent, options) {
 
     componentDidMount() {
       if (options.renderTo) {
-        this.container = typeof options.renderTo === 'string' ? document.querySelector(options.renderTo) : options.renderTo;
+        this.container =
+          typeof options.renderTo === 'string'
+            ? document.querySelector(options.renderTo)
+            : options.renderTo;
       } else {
         this.container = document.createElement('div');
         document.body.appendChild(this.container);
@@ -292,7 +295,7 @@ function displace(WrappedComponent, options) {
 
       return ReactDOM.createPortal(
         React.createElement(WrappedComponent, this.props, this.props.children),
-        this.container,
+        this.container
       );
     }
   }
